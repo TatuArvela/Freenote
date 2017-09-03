@@ -1,0 +1,12 @@
+{
+  "name": "Freenote",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Tatu Arvela",
+  "license": "MIT",
+  "dependencies": {
+    "preact": "^8.2.5",
+    "preact-redux": "^2.0.2",
+    "redux": "^3.7.2"
+  }
+}
