@@ -17,7 +17,7 @@ module.exports = {
 
     module: {
         loaders: [
-            {
+            {   // Preact
                 test: /\.(js|jsx)$/,
                 loader: 'babel-loader',
                 options: {
@@ -29,17 +29,15 @@ module.exports = {
                     ]
                 }
             },
-            {
+            {   // Sass
                 test: /\.(css|sass|scss)$/,
-                loader: process.env.NODE_ENV !== 'production' ? 
-                // Development
-                'style-loader!css-loader?sourceMap!sass-loader?sourceMap' : 
-                // Build
-                ExtractTextPlugin.extract({
+                loader: process.env.NODE_ENV !== 'production' ?             // Check environment
+                'style-loader!css-loader?sourceMap!sass-loader?sourceMap' :     // Development
+                ExtractTextPlugin.extract({                                     // Production
                     fallback: "style-loader",
                     use: [
                         {
-                            loader: "css-loader",
+                            use: "css-loader",
                             options: {
                                 sourceMap: true,
                                 modules: true,
@@ -48,40 +46,32 @@ module.exports = {
                             }
                         },
                         {
-                            loader: "postcss-loader",
+                            use: "postcss-loader",
                             options: {
+                                sourceMap: true,
                                 plugins: function () {
                                     return [
                                         require("autoprefixer")
                                     ];
-                                },
-                                sourceMap: true
+                                }
                             }
                         },
                         {
-                            loader: "sass-loader",
+                            use: "sass-loader",
                             options: {
                                 sourceMap: true
                             }
                         }
                     ]
                 })
-            },
-            {
-                test: /\.css$/,
-                loader:  ExtractTextPlugin.extract({
-                  use: [{
-                    loader: 'css-loader',
-                    options: { importLoaders: 1 },
-                  }],
-                }),
             }
         ]
     },
 
     plugins: [
+        // Output parsed CSS files
         new ExtractTextPlugin({
-            filename: '/styles/[name].css',
+            filename: './styles/[name].css',
             allChunks: true
         })
     ],
