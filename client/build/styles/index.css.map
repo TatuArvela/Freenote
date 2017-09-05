@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./styles/index.sass"],"names":[],"mappings":"AAAA;EACI,iBAAgB,EAAI","file":"/styles/index.css","sourcesContent":["body {\n    background: blue; }\n\n\n\n// WEBPACK FOOTER //\n// ./styles/index.sass"],"sourceRoot":""}
