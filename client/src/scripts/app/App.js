@@ -1,4 +1,5 @@
 import { h, Component } from 'preact';
+
 import Header from '../header/Header';
 import Notes from '../notes/Notes';
 

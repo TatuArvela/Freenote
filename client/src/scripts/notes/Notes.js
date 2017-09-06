@@ -6,5 +6,18 @@ export default () => (
         <Note />
         <Note />
         <Note />
+        <Note />
+        <Note />
+        <Note />
+        <Note />
+        <Note />
+        <Note />
+        <Note />
+        <Note />
+        <Note />
+        <Note />
+        <Note />
+        <Note />
+        <Note />
     </div>
 );
