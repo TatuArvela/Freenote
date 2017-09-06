@@ -1,5 +1,5 @@
-# Freenote
-An open-source note-taking application.
+# Freenote ![Freenote icon](Freenote.png?raw=true "Freenote") 
+An open-source note-taking application. A personal alternative to Google Keep.
 
 ## Client
 The client adorns a Microsoft Ribbon style user interface, and is built using Node.js, Webpack, Preact, Redux and Sass.
