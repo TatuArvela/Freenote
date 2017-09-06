@@ -2,7 +2,7 @@
 An open-source note-taking application.
 
 ## Client
-The client adorns a Microsoft Ribbon style user interface, and is built using Node.js, Webpack, Preact, Redux and Sass. Express is used for running the project on a development server.
+The client adorns a Microsoft Ribbon style user interface, and is built using Node.js, Webpack, Preact, Redux and Sass.
 
 I must give credit to these great reference projects: 
 * https://github.com/developit/zero-to-preact

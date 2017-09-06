@@ -1,0 +1,91 @@
+@import 'palette.scss';
+
+.header {
+    background: $primary;
+}
+
+.window-controls {
+    display: block;
+    height: 29px;
+}
+
+.window-title {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    margin: auto;
+    font-size: 14px;
+    padding: 15px 0px 0px 0px;
+    color: $primary-text;
+}
+
+.ribbon {
+    min-height: 30px;
+}
+
+.ribbon-tabs {
+    display: block;
+    height: 30px;
+}
+
+.ribbon-tab {
+    display: inline-block;
+    height: 100%;
+    text-align: center;
+    margin: 0px 1px;
+    padding: 7.5px 13.5px;
+    min-width: 62px;
+    font-size: 13px;
+    color: $primary-text;
+    cursor: default;
+    &:nth-child(1) {
+        margin-left: 0px;
+    }
+    &:hover {
+        background: lighten($primary, 7)
+    }
+    &.active, .active:hover {
+        @if lightness($primary) < 50 {
+            color: $primary;
+        }
+        background: $ribbon-active;
+    }
+}
+
+.user-name {
+    height: 100%;
+    float: right;
+    font-size: 13px;
+    color: $primary-text;
+    padding: 7.5px 13.5px;
+    cursor: default;
+}
+
+.ribbon-toolbar {
+    display: block;
+    height: 92px;
+    background: $ribbon-active;
+    border-bottom: 1px solid darken($ribbon-active, 11);
+    display: none;
+}
+
+.ribbon-toolbar-section {
+    position: relative;
+    display: inline-block;
+    height: calc(100% - 8px);
+    margin: 4px 0px;
+    min-width: 150px;
+    border-right: 1px solid darken($ribbon-active, 11);
+}
+
+.ribbon-toolbar-section-title {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    font-size: 12px;
+    cursor: default;
+    color: darken($ribbon-active, 60);
+}
