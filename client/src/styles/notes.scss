@@ -1,14 +1,33 @@
 .notes-grid {
-    display: block;
-    width: 500px;
+    position: absolute;
+    top: 59px;
+    bottom: 0px;
+    width: 100%;
     margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    overflow-y: auto;
 }
 
 .note {
     display: block;
-    min-height: 200px;
     background: rgb(255, 255, 255);
     border: solid 1px rgb(198, 198, 198);
     padding: 10px;
-    margin: 20px 0px;
+    margin: 10px 10px;
+    &.note-small {
+        height: 200px;
+        width: 200px;
+    }
+    &.note-wide {
+        height: 200px;
+        width: 420px;
+    }
+    &.note-big {
+        height: 420px;
+        width: 420px;
+    }
 }
