@@ -1,13 +1,13 @@
 import { h, render } from 'preact';
-// import { Provider } from 'preact-redux';
-// import store from './store';
+import { Provider } from 'preact-redux';
+import store from './store';
 import App from './app/App';
 import style from '../styles/index.scss';
 
 render((
-    // <div id="outer">
-    //     <Provider store={store}>
+    <div id="outer">
+        <Provider store={store}>
             <App />
-    //     </Provider>
-    // </div> 
+        </Provider>
+    </div> 
 ), document.body);

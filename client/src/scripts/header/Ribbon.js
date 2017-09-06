@@ -4,9 +4,12 @@ export default () => (
     <div class="ribbon">
         <div class="ribbon-tabs">
             <div class="ribbon-tab">File</div>
-            <div class="ribbon-tab active">Home</div>
+            <div class="ribbon-tab">Home</div>
             <div class="ribbon-tab">Insert</div>
+            <div class="ribbon-tab">View</div>
+            {/* Break */}
             <div class="user-name">Arvela, Tatu</div>
+            <div class="search">Search [____________]</div>
         </div>
         <div class="ribbon-toolbar">
             <div class="ribbon-toolbar-section">
