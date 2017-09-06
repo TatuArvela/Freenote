@@ -38,16 +38,16 @@ export default class App extends Component {
         this.setState({ text: e.target.value });
     };
 
-    render({ todos }, { text }) {
+    render({todos}, {text}) {
         return (
             <div id="app">
                 <form onSubmit={this.addTodos} action="javascript:">
                     <input value={text} onInput={this.updateText} placeholder="New ToDo..." />
                 </form>
                 <ul>
-                    { todos.map(todo => (
+                    {todos.map(todo => (
                         <TodoItem key={todo.id} todo={todo} onRemove={this.removeTodo} />
-                    )) }
+                    ))}
                 </ul>
             </div>
         );
