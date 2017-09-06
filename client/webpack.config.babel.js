@@ -20,7 +20,7 @@ module.exports = {
     module: {
         loaders: [
             {   // Preact
-                test: /\.(js|jsx)$/,
+                test: /\.jsx?$/,
                 loader: 'babel-loader',
                 options: {
                     presets: [
@@ -44,7 +44,10 @@ module.exports = {
             verbose:  true
         }),
         new HtmlWebpackPlugin({
-            title: 'Freenote'
+            title: 'Freenote',
+            favicon: path.resolve(__dirname, './src/favicon.ico'),
+            template: path.resolve(__dirname, './src/index.html'),
+            inject: 'body'
         })
     ],
     

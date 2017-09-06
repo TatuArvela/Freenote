@@ -1,15 +1,20 @@
-.notes-grid {
+.notes {
     position: absolute;
     top: 59px;
     bottom: 0px;
     width: 100%;
     margin: auto;
+    overflow-y: auto;
+}
+
+.notes-grid {
+    max-width: 1040px;
+    margin: auto;
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     flex-flow: row wrap;
     align-content: flex-start;
-    overflow-y: auto;
 }
 
 .note {
@@ -18,16 +23,31 @@
     border: solid 1px rgb(198, 198, 198);
     padding: 10px;
     margin: 10px 10px;
+    line-height: 20px;
+    font-size: 14px;
     &.note-small {
-        height: 200px;
-        width: 200px;
+        height: 240;
+        width: 240px;
     }
     &.note-wide {
-        height: 200px;
-        width: 420px;
+        height: 240px;
+        width: 500px;
     }
     &.note-big {
-        height: 420px;
-        width: 420px;
+        height: 500px;
+        width: 500px;
+    }
+}
+
+.note-content {
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    max-height: 100%;
+    &>h2 {
+        line-height: 24px;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 16px;
     }
 }

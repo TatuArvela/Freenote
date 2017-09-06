@@ -43,7 +43,7 @@
         margin-left: 0px;
     }
     &:hover {
-        background: lighten($primary, 7)
+        background: lighten($primary, 10)
     }
     &.active, .active:hover {
         @if lightness($primary) < 50 {
@@ -51,6 +51,15 @@
         }
         background: $ribbon-active;
     }
+}
+
+.search {
+    height: 100%;
+    float: right;
+    font-size: 13px;
+    color: $primary-text;
+    padding: 7.5px 13.5px;
+    cursor: default;
 }
 
 .user-name {
