@@ -1,0 +1,22 @@
+@import '_reset.scss';
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+@import 'palette.scss';
+@import 'header.scss';
+@import 'notes.scss';
+
+* {
+    box-sizing: border-box;
+}
+
+.app {
+    display: block;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    font-family: "Noto Sans";
+    background: rgb(230, 230, 230);
+    border: 1px solid $primary;
+}

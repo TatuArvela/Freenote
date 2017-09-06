@@ -1,6 +1,5 @@
 var path = require('path');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var debug = process.env.NODE_ENV !== "production";
 
@@ -34,7 +33,7 @@ module.exports = {
             },
             {   // Sass
                 test: /\.(sass|scss)$/,
-                loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+                loader: 'style-loader!css-loader!sass-loader'
             }
         ]
     },
@@ -43,9 +42,6 @@ module.exports = {
         new CleanWebpackPlugin('build', {
             root:     path.resolve(__dirname),
             verbose:  true
-        }),
-        new ExtractTextPlugin('style.css', {
-            allChunks: true
         }),
         new HtmlWebpackPlugin({
             title: 'Freenote'
