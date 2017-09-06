@@ -1,5 +1,8 @@
 var path = require('path');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var debug = process.env.NODE_ENV !== "production";
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
@@ -10,7 +13,7 @@ module.exports = {
 
     output: {
         path: path.resolve( __dirname, 'build' ),
-        filename: './scripts/bundle.js'
+        filename: 'bundle.js'
     },
 
     devtool: 'source-map',
@@ -30,49 +33,22 @@ module.exports = {
                 }
             },
             {   // Sass
-                test: /\.(css|sass|scss)$/,
-                loader: process.env.NODE_ENV !== 'production' ?             // Check environment
-                'style-loader!css-loader?sourceMap!sass-loader?sourceMap' :     // Development
-                ExtractTextPlugin.extract({                                     // Production
-                    fallback: "style-loader",
-                    use: [
-                        {
-                            use: "css-loader",
-                            options: {
-                                sourceMap: true,
-                                modules: true,
-                                importLoaders: true,
-                                localIdentName: "[name]__[local]___[hash:base64:5]"
-                            }
-                        },
-                        {
-                            use: "postcss-loader",
-                            options: {
-                                sourceMap: true,
-                                plugins: function () {
-                                    return [
-                                        require("autoprefixer")
-                                    ];
-                                }
-                            }
-                        },
-                        {
-                            use: "sass-loader",
-                            options: {
-                                sourceMap: true
-                            }
-                        }
-                    ]
-                })
+                test: /\.(sass|scss)$/,
+                loader: ExtractTextPlugin.extract('css-loader!sass-loader')
             }
         ]
     },
 
     plugins: [
-        // Output parsed CSS files
-        new ExtractTextPlugin({
-            filename: './styles/[name].css',
+        new CleanWebpackPlugin('build', {
+            root:     path.resolve(__dirname),
+            verbose:  true
+        }),
+        new ExtractTextPlugin('style.css', {
             allChunks: true
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Freenote'
         })
     ],
     
