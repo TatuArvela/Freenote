@@ -55,11 +55,19 @@
         color: #000;
         opacity: 0.5
     }
-    &>h2 {
-        line-height: 24px;
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 16px;
+}
+
+.note-title {
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    border: none;
+    resize: none;
+    color: black;
+    background: none;
+    &:focus {
+        outline: none;
     }
 }
 
@@ -69,11 +77,11 @@
     height: calc(100% - 30px);
     border: none;
     resize: none;
+    color: black;
     background: none;
     &:focus {
         outline: none;
     }
-    color: black;
 }
 
 .note-controls {
