@@ -1,9 +1,10 @@
 import { createStore } from 'redux';
 
 let ACTIONS = {
-    ADD_TODO: ({ todos, ...state }, { text }) => ({
+    ADD_TODO: ({ todos, ...state }, { title, text }) => ({
         todos: [...todos, {
             id: Math.random().toString(36).substring(2),
+            title,
             text
         }],
         ...state

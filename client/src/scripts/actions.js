@@ -1,6 +1,7 @@
-export function addTodo(text) {
+export function addTodo(title, text) {
     return {
         type: 'ADD_TODO',
+        title,
         text
     };
 }

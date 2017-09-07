@@ -14,9 +14,7 @@ export default class Note extends Component {
         return (
             <div class="note">
                 <div class="note-content">
-                    {todo.title &&
-                        <h2>{todo.title}</h2>
-                    }
+                    <input class="note-title" value={todo.title}/>
                     <textarea class="note-textarea">{todo.text}</textarea>
                     
                 </div>
