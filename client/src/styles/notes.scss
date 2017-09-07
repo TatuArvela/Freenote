@@ -1,33 +1,108 @@
-.notes-grid {
+@import 'palette.scss';
+
+.notes {
     position: absolute;
     top: 59px;
     bottom: 0px;
     width: 100%;
     margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: row wrap;
-    align-content: flex-start;
     overflow-y: auto;
 }
 
+.notes-grid {
+    max-width: 1040px;
+    margin: auto;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+
 .note {
+    position: relative;
     display: block;
-    background: rgb(255, 255, 255);
-    border: solid 1px rgb(198, 198, 198);
+    background: $note-background;
+    border: solid 1px darken($note-background, 22.5);
     padding: 10px;
     margin: 10px 10px;
-    &.note-small {
-        height: 200px;
-        width: 200px;
+    line-height: 20px;
+    font-size: 14px;
+    height: 240px;
+    width: 240px;
+}
+
+.note-new {
+    background: lighten($primary, 30);
+    border: solid 1px lighten($primary, 10);
+}
+
+.note-content {
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    max-height: 100%;
+    white-space: pre;
+    ::-webkit-input-placeholder {
+        color: #000;
+        opacity: 0.5;
     }
-    &.note-wide {
-        height: 200px;
-        width: 420px;
+    :-ms-input-placeholder {
+        color: #000;
+        opacity: 0.5;
     }
-    &.note-big {
-        height: 420px;
-        width: 420px;
+    ::-moz-placeholder {
+        color: #000;
+        opacity: 0.5
+    }
+    &>h2 {
+        line-height: 24px;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 16px;
+    }
+}
+
+.note-textarea {
+    font-family: inherit;
+    width: 100%;
+    height: calc(100% - 30px);
+    border: none;
+    resize: none;
+    background: none;
+    &:focus {
+        outline: none;
+    }
+    color: black;
+}
+
+.note-controls {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 29px;
+    background: darken($note-background, 5);
+    .note-new > & {
+        background: lighten($primary, 25);
+    }
+}
+
+.note-button {
+    background: none;
+    border: none;
+    width: 25%;
+    height: 100%;
+    float: right;
+    color: darken($note-background, 40);
+    .note-new > .note-controls > & {
+        color: darken($primary, 10);
+    }
+    &:hover {
+        background: darken($note-background, 12.5);
+        .note-new > .note-controls > & {
+            background: lighten($primary, 20);
+        }
     }
 }
