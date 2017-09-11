@@ -8,29 +8,30 @@ Credit must be given to these sample projects, as they were greatly helpful in s
 * https://github.com/developit/zero-to-preact
 * https://github.com/developit/preact-redux-example
 
-### TODO
-#### UI elements and mockups
+### Upcoming features
+#### Development
+* Login / Logout feature
+* Login view
+* Synchronization with server
+
+#### To-do
 * Toolbars
 * Sidebar
 * File menu
-* Login / Logout
-* Animations
 
-#### Notes
+#### Backlog
+* Search
+* Drag to reorder
 * Tags
 * Pinning
 * Checkboxes
-
-#### Features
-* Search
-* Login
-* Synchronization with server
-* Drag to reorder
+* Animations
 
 ## Server
 The server provides a REST API for authentication using OAuth 2 and JSON Web Tokens, and a WebSocket service for interacting with the MongoDB database.
 
-### TODO
+### Upcoming features
+#### Development
 * Server configuration
 * Basic server features
 * Login mockup service
