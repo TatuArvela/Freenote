@@ -1,19 +1,3 @@
-// import { h, Component } from 'preact';
-
-// import Header from '../components/header/Header';
-// import Notes from '../components/notes/Notes';
-
-// export default class App extends Component {
-//     render() {
-//         return (
-//             <div class="app">
-//                 <Header />
-//                 <Notes />
-//             </div>
-//         );
-//     }
-// }
-
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
@@ -24,6 +8,7 @@ import * as actions from '../actions';
 import Header from '../components/header/Header'
 import Notes from '../components/notes/Notes'
 import Note from '../components/notes/Note'
+import style from '../../styles/app.scss';
 
 @connect(reduce, bindActions(actions))
 export default class App extends Component {
@@ -51,7 +36,7 @@ export default class App extends Component {
 
     render({todos}, {title, text}) {
         return (
-            <div class="container">
+            <div class="app">
                 <Header />
 
                 <Notes>
