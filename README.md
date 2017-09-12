@@ -1,4 +1,5 @@
-# Freenote ![Freenote icon](Freenote.png?raw=true "Freenote") 
+![Freenote icon](client/src/logo.png?raw=true "Freenote")
+
 Freenote is an open-source note-taking application. It consists of two separate applications, a client and a server.
 
 ## Client
