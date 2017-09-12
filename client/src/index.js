@@ -1,8 +1,8 @@
 import { h, render } from 'preact';
 import { Provider } from 'preact-redux';
-import store from './store';
-import App from './containers/App';
-import Login from './containers/Login';
+import store from './app/store';
+import App from './app/App';
+import Login from './login/Login';
 
 var loggedIn = false;
 

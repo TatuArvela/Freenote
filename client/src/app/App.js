@@ -1,16 +1,16 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
-import { bindActions } from '../util';
-import reduce from '../reducers';
-import * as actions from '../actions';
+import { bindActions } from './util';
+import reduce from './reducers';
+import Header from '../header/Header'
+import Notes from '../note/Notes'
+import Note from '../note/Note'
+import * as NoteActions from '../note/NoteActions';
 
-import Header from '../components/header/Header'
-import Notes from '../components/notes/Notes'
-import Note from '../components/notes/Note'
-import style from '../../styles/app.scss';
+import style from './app.scss';
 
-@connect(reduce, bindActions(actions))
+@connect(reduce, bindActions(NoteActions))
 export default class App extends Component {
     addTodos = () => {
         const { title, text } = this.state;

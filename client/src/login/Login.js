@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 
-import style from '../../styles/login.scss';
+import style from './login.scss';
 
 export default class Login extends Component {
     render()  {

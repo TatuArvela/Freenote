@@ -10,8 +10,8 @@ Credit must be given to these sample projects, as they were greatly helpful in s
 
 ### Upcoming features
 #### Development
-* Login / Logout feature
-* Login view
+* Login / Logout mockup
+* Login / Logout implementation on server
 * Synchronization with server
 
 #### To-do
