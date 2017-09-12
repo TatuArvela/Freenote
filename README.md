@@ -1,6 +1,6 @@
 ![Freenote icon](client/src/logo.png?raw=true "Freenote")
 
-Freenote is an open-source note-taking application. It consists of two separate applications, a client and a server.
+Freenote is an open-source note-taking application. It consists of two separate applications; a client and a server.
 
 ## Client
 The client's user interface follows Microsoft' Ribbon style. It was built with a stack of great open-source frameworks, including Node.js, Webpack, Babel, Preact, Redux and Sass.
@@ -11,22 +11,24 @@ Credit must be given to these sample projects, as they were greatly helpful in s
 
 ### Upcoming features
 #### Development
-* Login / Logout mockup
-* Login / Logout implementation on server
-* Synchronization with server
+* Login / Logout mockup actions
+* Login / Logout implementation with server
 
 #### To-do
-* Toolbars
-* Sidebar
-* File menu
+* Toolbar mockups
+* Note synchronization with server
 
 #### Backlog
-* Search
+* User details
+* Multiple boards
+* File menu
 * Drag to reorder
 * Tags
+* Search
+* Sidebar (tags, search)
 * Pinning
-* Checkboxes
-* Animations
+* Checklists
+* Adding pictures
 
 ## Server
 The server provides a REST API for authentication using OAuth 2 and JSON Web Tokens, and a WebSocket service for interacting with the MongoDB database.

@@ -7,16 +7,10 @@ import Login from './login/Login';
 var loggedIn = true;
 
 render((
-    <div id="preact">
-        {!loggedIn && 
-            <Provider store={store}>
-                <Login />
-            </Provider>
-        }
-        {loggedIn && 
-            <Provider store={store}>
-                <App />
-            </Provider>
-        }
-    </div> 
+    <Provider store={store}>
+        <div id="preact">
+            {!loggedIn && <Login />}
+            {loggedIn && <App />}
+        </div>
+    </Provider>
 ), document.body);
