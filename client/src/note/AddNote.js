@@ -1,11 +1,10 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
-import { bindActions } from '../app/util';
 import reduce from '../app/reducers';
-import * as NoteActions from '../note/NoteActions';
+import * as noteActions from '../note/noteActions';
 
-@connect(reduce, bindActions(NoteActions))
+@connect(reduce, {...noteActions})
 export default class AddNote extends Component {
     addNotes = () => {
         const { title, text } = this.state;

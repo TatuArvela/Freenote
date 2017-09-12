@@ -11,6 +11,7 @@ Credit must be given to these sample projects, as they were greatly helpful in s
 
 ### Upcoming features
 #### Development
+* Refactor store and reducers
 * Login / Logout mockup actions
 * Login / Logout implementation with server
 
