@@ -1,7 +1,6 @@
-@import '_reset.scss';
+@import '../reset.scss';
+@import '../palette.scss';
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
-
-@import 'palette.scss';
 
 * {
     box-sizing: border-box;
