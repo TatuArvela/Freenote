@@ -4,7 +4,7 @@ import store from './app/store';
 import App from './app/App';
 import Login from './login/Login';
 
-var loggedIn = false;
+var loggedIn = true;
 
 render((
     <div id="preact">

@@ -47,7 +47,6 @@ module.exports = {
             verbose:  true
         }),
         new HtmlWebpackPlugin({
-            title: 'Freenote',
             favicon: path.resolve(__dirname, './src/favicon.ico'),
             template: path.resolve(__dirname, './src/index.html'),
         })
