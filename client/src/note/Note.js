@@ -1,21 +1,21 @@
 import { h, Component } from 'preact';
 
 export default class Note extends Component {
-    shouldComponentUpdate({ todo, onRemove }) {
-        return todo !== this.props.todo || onRemove !== this.props.onRemove;
+    shouldComponentUpdate({ note, onRemove }) {
+        return note !== this.props.note || onRemove !== this.props.onRemove;
     }
 
     remove = () => {
-        let { onRemove, todo } = this.props;
-        onRemove(todo);
+        let { onRemove, note } = this.props;
+        onRemove(note);
     };
 
-    render({ todo }) {
+    render({ note }) {
         return (
             <div class="note">
                 <div class="note-content">
-                    <input class="note-title" value={todo.title}/>
-                    <textarea class="note-textarea">{todo.text}</textarea>
+                    <input class="note-title" value={note.title}/>
+                    <textarea class="note-textarea">{note.text}</textarea>
                     
                 </div>
                 <div class="note-controls">

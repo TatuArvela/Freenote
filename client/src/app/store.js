@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
 
 let ACTIONS = {
-    ADD_TODO: ({ todos, ...state }, { title, text }) => ({
-        todos: [...todos, {
+    ADD_TODO: ({ notes, ...state }, { title, text }) => ({
+        notes: [...notes, {
             id: Math.random().toString(36).substring(2),
             title,
             text
@@ -10,14 +10,14 @@ let ACTIONS = {
         ...state
     }),
 
-    REMOVE_TODO: ({ todos, ...state }, { todo }) => ({
-        todos: todos.filter( i => i!==todo ),
+    REMOVE_TODO: ({ notes, ...state }, { note }) => ({
+        notes: notes.filter( i => i!==note ),
         ...state
     })
 };
 
 const INITIAL = {
-    todos: []
+    notes: []
 };
 
 export default createStore( (state, action) => (

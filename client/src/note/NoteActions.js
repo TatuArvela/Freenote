@@ -1,4 +1,4 @@
-export function addTodo(title, text) {
+export function addNote(title, text) {
     return {
         type: 'ADD_TODO',
         title,
@@ -6,9 +6,9 @@ export function addTodo(title, text) {
     };
 }
 
-export function removeTodo(todo) {
+export function removeNote(note) {
     return {
         type: 'REMOVE_TODO',
-        todo
+        note
     };
 }
