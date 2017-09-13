@@ -1,14 +1,12 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
-import { bindActions } from '../app/util';
 import reduce from '../app/reducers';
-import * as NoteActions from '../note/NoteActions';
-
+import * as noteActions from '../note/noteActions';
 import AddNote from './AddNote';
 import Note from './Note';
 
-@connect(reduce, bindActions(NoteActions))
+@connect(reduce, {...noteActions})
 export default class Notes extends Component {
     removeNote = (note) => {
         this.props.removeNote(note);
