@@ -38,6 +38,12 @@
 }
 
 .note-content {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 29px;
+    margin: 10px;
     overflow: hidden !important;
     text-overflow: ellipsis;
     max-width: 100%;
@@ -74,7 +80,8 @@
 .note-textarea {
     font-family: inherit;
     width: 100%;
-    height: calc(100% - 30px);
+    padding: 0px;
+    height: calc(100% - 42px);
     border: none;
     resize: none;
     color: black;
