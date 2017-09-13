@@ -1,33 +1,29 @@
 @import '../palette.scss';
 
-.header {
-    background: $primary;
-}
-
-.window-controls {
-    display: block;
-    height: 29px;
-}
-
-.window-title {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    text-align: center;
-    margin: auto;
-    font-size: 12px;
-    padding: 15px 0px 0px 0px;
-    color: $primary-text;
-    cursor: default;
-}
-
 .ribbon {
+    position: relative;
+    background: $primary;
     min-height: 24px;
 }
 
 .ribbon-tabs {
     display: block;
     height: 24px;
+}
+
+.window-title {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 100%;
+    text-align: center;
+    font-size: 12px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: $primary-text;
+    cursor: default;
+    pointer-events: none;
 }
 
 .ribbon-tab {
@@ -106,7 +102,7 @@
     height: 92px;
     background: $ribbon-active;
     border-bottom: 1px solid darken($ribbon-active, 11);
-    display: none;
+    // display: none;
 }
 
 .ribbon-toolbar-section {

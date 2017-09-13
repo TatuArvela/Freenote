@@ -19,7 +19,6 @@ Credit must be given to these sample projects, as they were greatly helpful in s
 * Toolbars
 * Responsive layout
 * Note synchronization with server
-* Redux refactoring
 
 #### To-do
 * Search
