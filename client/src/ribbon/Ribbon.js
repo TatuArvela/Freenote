@@ -21,7 +21,7 @@ export default () => (
                 <p class="ribbon-toolbar-section-title">Appearance</p>
             </div>
         </div> */}
-        <div class="ribbon-toolbar">
+        {/* <div class="ribbon-toolbar">
             <div class="ribbon-toolbar-section">
                 Select board, New board
                 <p class="ribbon-toolbar-section-title">Boards</p>
@@ -34,6 +34,6 @@ export default () => (
                 Rows, List
                 <p class="ribbon-toolbar-section-title">Display</p>
             </div>
-        </div>
+        </div> */}
     </div>
 );
