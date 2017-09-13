@@ -13,14 +13,14 @@ Credit must be given to these sample projects, as they were greatly helpful in s
 #### Development
 * Refactor store and reducers
 * Login / Logout mockup actions
-* Login / Logout implementation with server
+* Note synchronization with server
 
 #### Analysis
 * Toolbars
 * Responsive layout
-* Note synchronization with server
 
 #### To-do
+* Login / Logout implementation with server
 * Search
 * Tags
 * User details

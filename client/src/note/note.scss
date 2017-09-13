@@ -22,7 +22,7 @@
 .note {
     position: relative;
     display: block;
-    background: $note-background;
+    background: linear-gradient($note-background, darken($note-background, 7.5));
     border: solid 1px darken($note-background, 22.5);
     padding: 10px;
     margin: 10px 10px;
@@ -33,8 +33,8 @@
 }
 
 .note-new {
-    background: lighten($primary, 30);
-    border: solid 1px lighten($primary, 10);
+    background: linear-gradient($note-new-background, darken($note-new-background, 7.5));
+    border: solid 1px darken($note-new-background, 22.5);;
 }
 
 .note-content {
@@ -50,15 +50,15 @@
     max-height: 100%;
     white-space: pre;
     ::-webkit-input-placeholder {
-        color: #000;
+        color: darken($note-new-background, 60);
         opacity: 0.5;
     }
     :-ms-input-placeholder {
-        color: #000;
+        color: darken($note-new-background, 60);
         opacity: 0.5;
     }
     ::-moz-placeholder {
-        color: #000;
+        color: darken($note-new-background, 60);
         opacity: 0.5
     }
 }
@@ -98,10 +98,6 @@
     bottom: 0px;
     width: 100%;
     height: 29px;
-    background: darken($note-background, 5);
-    .note-new > & {
-        background: lighten($primary, 25);
-    }
 }
 
 .note-button {
@@ -112,12 +108,12 @@
     float: right;
     color: darken($note-background, 40);
     .note-new > .note-controls > & {
-        color: darken($primary, 10);
+        color: darken($note-new-background, 40);
     }
     &:hover {
         background: darken($note-background, 12.5);
         .note-new > .note-controls > & {
-            background: lighten($primary, 20);
+            background: darken($note-new-background, 12.5);
         }
     }
 }

@@ -11,7 +11,7 @@ export default () => (
             <div class="user-name">Arvela, Tatu</div>
             <div class="search"><img src="../icon-search.png"/><input type="text" placeholder="Search..."/></div>
         </div>
-        {/* <div class="ribbon-toolbar">
+        <div class="ribbon-toolbar">
             <div class="ribbon-toolbar-section">
                 Color, Bold, Italic
                 <p class="ribbon-toolbar-section-title">Content style</p>
@@ -20,7 +20,7 @@ export default () => (
                 Note color
                 <p class="ribbon-toolbar-section-title">Appearance</p>
             </div>
-        </div> */}
+        </div>
         {/* <div class="ribbon-toolbar">
             <div class="ribbon-toolbar-section">
                 Select board, New board
