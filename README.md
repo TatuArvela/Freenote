@@ -14,20 +14,22 @@ Credit must be given to these sample projects, as they were greatly helpful in s
 * Login / Logout mockup actions
 * Login / Logout implementation with server
 
-#### To-do
-* Toolbar mockups
+#### Analysis
+* Toolbars
+* Responsive layout
 * Note synchronization with server
+* Redux refactoring
 
-#### Backlog
-* User details
-* Multiple boards
-* File menu
-* Drag to reorder
-* Tags
+#### To-do
 * Search
-* Sidebar (tags, search)
-* Pinning
+* Tags
+* User details
 * Checklists
+* Multiple boards
+
+#### Open
+* Drag to reorder
+* Pinning
 * Adding pictures
 
 ## Server
