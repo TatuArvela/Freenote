@@ -17,7 +17,7 @@
     top: 0px;
     left: 0px;
     right: 0px;
-    height: 100%;
+    height: 24px;
     text-align: center;
     font-size: 12px;
     padding: 6px 12px;
@@ -110,6 +110,7 @@
     background: $ribbon-active;
     border-bottom: 1px solid darken($ribbon-active, 11);
     cursor: default;
+    overflow-y: auto;
 }
 
 .ribbon-toolbar-section {
@@ -144,8 +145,19 @@
     }
 }
 
+.full-width {
+    width: 100%;
+}
+
+.divider {
+    width: 0px;
+    height: 24px;
+    border-left: 1px solid darken($ribbon-active, 11);
+    margin: 0px 5px;
+}
+
 .ribbon-toolbar-select {
-    min-width: 100%;
+    vertical-align: top;
     height: 22px;
 }
 
@@ -156,7 +168,7 @@
     font-size: 12px;
     line-height: 22px;
     color: darken($ribbon-active, 70);
-    padding: 0px 6px 0px 0px;
+    padding: 0px 0px 0px 0px;
     &:hover {
         background: rgba(0,0,0,0.2);
     }
@@ -191,7 +203,7 @@
             right: 0px;
             margin: auto;
             display: inline-block;
-            color: $primary;
+            color: $accent;
             font-size: 30px;
             width: 30px;
             height: 30px;
@@ -216,4 +228,26 @@
     font-size: 11px;
     cursor: default;
     color: darken($ribbon-active, 60);
+}
+
+@media screen and (max-width: 1060px) {
+    .notes-grid {
+        max-width: 790px !important;
+    }
+}
+
+@media screen and (max-width: 810px) {
+    .notes-grid {
+        max-width: 540px !important;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .notes-grid {
+        justify-content: center !important;
+    }
+
+    .window-title, .search {
+        display: none;
+    }
 }

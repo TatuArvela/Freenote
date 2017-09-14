@@ -7,7 +7,7 @@ export default class Login extends Component {
         return (
             <div class="login">
                 <div class="login-main">
-                    <img class="login-header" src="../../logo-header.png" alt="Freenote"/>
+                    <img class="login-header" src="../../logo.png" alt="Freenote"/>
 
                     <form class="login-form">
                         <p class="login-message">Sign in with your username and password</p>
