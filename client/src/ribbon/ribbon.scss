@@ -203,19 +203,40 @@
             right: 0px;
             margin: auto;
             display: inline-block;
-            color: $accent;
             font-size: 30px;
             width: 30px;
             height: 30px;
             line-height: 30px;
         }
-        & > span {
+        & > .button-title {
             position: absolute;
             top: 32px;
             left: 0px;
             right: 0px;
-            word-break: break-all;
+            word-break: break-word;
+            line-height: 16px;
         }
+    }
+}
+
+.ribbon-toolbar-button-expand {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    font-size: 16px;
+}
+
+.colorbox {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 20%;
+    height: 20%;
+    background: purple;
+    .small > i > & {
+        right: 4px;
+        bottom: 4px;
     }
 }
 

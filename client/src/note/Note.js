@@ -19,9 +19,7 @@ export default class Note extends Component {
                     
                 </div>
                 <div class="note-controls">
-                    <button onClick={this.remove} class="note-button" title="Keep on top of stack"><i class="material-icons">vertical_align_top</i></button>
-                    <button onClick={this.remove} class="note-button" title="Move or copy to other stack"><i class="material-icons">layers</i></button>
-                    <button onClick={this.remove} class="note-button" title="Select tags"><i class="material-icons">local_offer</i></button>
+                    <button class="note-button" title="Keep on top of stack"><i class="material-icons">vertical_align_top</i></button>
                     <button onClick={this.remove} class="note-button" title="Delete note"><i class="material-icons">delete_forever</i></button>
                 </div>
             </div>

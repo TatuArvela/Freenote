@@ -33,11 +33,6 @@
     border-radius: 2px;
 }
 
-.note-new {
-    background: none;
-    border: solid 1px $accent;
-}
-
 .note-content {
     position: absolute;
     left: 0px;
@@ -50,15 +45,6 @@
     max-width: 100%;
     max-height: 100%;
     white-space: pre;
-    ::-webkit-input-placeholder {
-        color: $accent;
-    }
-    :-ms-input-placeholder {
-        color: $accent;
-    }
-    ::-moz-placeholder {
-        color: $accent;
-    }
 }
 
 .note-title {
@@ -116,8 +102,5 @@
     }
     & > i {
         font-size: 24px;
-    }
-    .note-new > .note-controls > & {
-        color: $accent;
     }
 }
