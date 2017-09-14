@@ -17,6 +17,7 @@ Credit must be given to these sample projects, as they were greatly helpful in s
 
 #### Analysis
 * Toolbars
+* Move add function to toolbar
 * Responsive layout
 
 #### To-do
@@ -29,6 +30,7 @@ Credit must be given to these sample projects, as they were greatly helpful in s
 * Undo
 
 #### Open
+* Localization
 * Drag to reorder
 * Pinning
 * Adding pictures

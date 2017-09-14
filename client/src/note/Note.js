@@ -19,7 +19,7 @@ export default class Note extends Component {
                     
                 </div>
                 <div class="note-controls">
-                    <button onClick={this.remove} class="note-button">SCRAP</button>
+                    <button onClick={this.remove} class="note-button" title="Delete note"><i class="material-icons">delete_forever</i></button>
                 </div>
             </div>
         )
