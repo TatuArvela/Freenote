@@ -22,8 +22,8 @@
 .note {
     position: relative;
     display: block;
-    background: $note-background;
-    border: solid 1px darken($note-background, 22.5);
+    background: $paper-background;
+    border: solid 1px darken($paper-background, 22.5);
     padding: 10px;
     margin: 10px 10px;
     line-height: 20px;
@@ -35,7 +35,7 @@
 
 .note-new {
     background: none;
-    border: solid 1px $primary;
+    border: solid 1px $accent;
 }
 
 .note-content {
@@ -51,13 +51,13 @@
     max-height: 100%;
     white-space: pre;
     ::-webkit-input-placeholder {
-        color: $primary;
+        color: $accent;
     }
     :-ms-input-placeholder {
-        color: $primary;
+        color: $accent;
     }
     ::-moz-placeholder {
-        color: $primary;
+        color: $accent;
     }
 }
 
@@ -68,7 +68,7 @@
     margin-bottom: 16px;
     border: none;
     resize: none;
-    color: $note-text;
+    color: $paper-text;
     background: none;
     &:focus {
         outline: none;
@@ -82,7 +82,7 @@
     height: calc(100% - 42px);
     border: none;
     resize: none;
-    color: $note-text;
+    color: $paper-text;
     background: none;
     &:focus {
         outline: none;
@@ -104,7 +104,7 @@
     width: 12.5%;
     padding: 0px;
     float: right;
-    color: $note-button;
+    color: $muted;
     &:hover {
         background: rgba(0,0,0,0.1);
     }
@@ -118,6 +118,6 @@
         font-size: 24px;
     }
     .note-new > .note-controls > & {
-        color: $primary;
+        color: $accent;
     }
 }
