@@ -37,7 +37,7 @@ export default class AddNote extends Component {
                     </textarea>
                 </div>
                 <div class="note-controls">
-                    <button class="note-button" type="submit">ADD</button>
+                    <button class="note-button" type="submit"><i class="material-icons">add</i></button>
                 </div>
             </form>
         )
