@@ -22,27 +22,24 @@ export default class ToolbarEdit extends Component {
             <div class="ribbon-toolbar">
                 <div class="ribbon-toolbar-section">
                     <button class="ribbon-toolbar-column ribbon-toolbar-button" onClick={this.addNote}>
-                        <i class="material-icons">note_add</i>
-                        <span>Note</span>
+                        <i class="material-icons green">note_add</i>
+                        <span class="button-title">New Note</span>
                     </button>
-                    <span class="ribbon-toolbar-column">
-                        <span class="ribbon-toolbar-row">
-                            <select class="ribbon-toolbar-select">
-                                <option>Red</option>
-                                <option>Green</option>
-                                <option>Blue</option>
-                            </select>
-                        </span>
-                        <span class="ribbon-toolbar-row">
-                            <select multiple class="ribbon-toolbar-select">
-                                <option>No tag</option>
-                                <option>Work</option>
-                                <option>Important</option>
-                                <option>Learning</option>
-                            </select>
-                            <button class="ribbon-toolbar-button small"><i class="material-icons">add</i></button>
-                        </span>
-                    </span>
+                    <button class="ribbon-toolbar-column ribbon-toolbar-button">
+                        <i class="material-icons"><div class="colorbox"></div>colorize</i>
+                        <span class="button-title">Color</span>
+                        <span class="material-icons ribbon-toolbar-button-expand">expand_more</span>
+                    </button>
+                    <button class="ribbon-toolbar-column ribbon-toolbar-button">
+                        <i class="material-icons">layers</i>
+                        <span class="button-title">Stack</span>
+                        <span class="material-icons ribbon-toolbar-button-expand">expand_more</span>
+                    </button>
+                    <button class="ribbon-toolbar-column ribbon-toolbar-button">
+                        <i class="material-icons">local_offer</i>
+                        <span class="button-title">Tags</span>
+                        <span class="material-icons ribbon-toolbar-button-expand">expand_more</span>
+                    </button>
                     <p class="ribbon-toolbar-section-title">Notes</p>
                 </div>
                 <div class="ribbon-toolbar-section">
@@ -59,11 +56,9 @@ export default class ToolbarEdit extends Component {
                         <button class="ribbon-toolbar-button small"><i class="material-icons">format_italic</i></button>
                         <button class="ribbon-toolbar-button small"><i class="material-icons">format_underline</i></button>
                         <div class="divider"></div>
-                        <select class="ribbon-toolbar-select">
-                            <option>Red</option>
-                            <option>Green</option>
-                            <option>Blue</option>
-                        </select>
+                        <button class="ribbon-toolbar-button small">
+                            <i class="material-icons">colorize<div class="colorbox"></div></i>
+                        </button>
                     </span>
                     <p class="ribbon-toolbar-section-title">Font</p>
                 </div>

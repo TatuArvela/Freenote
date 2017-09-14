@@ -1,9 +1,15 @@
-$primary: rgb(21, 101, 192);
+$blue800: #1565C0;
+$green500: #4CAF50;
+
+$primary: $blue800;
 $primary-text: rgb(255, 255, 255);
-$accent: rgb(76, 175, 80);
 $muted: rgb(150, 150, 150);
 
 $ribbon-active: rgb(241, 241, 241);
 
 $paper-background: rgb(255, 255, 255);
 $paper-text: rgb(0, 0, 0);
+
+.green {
+    color: $green500;
+}
