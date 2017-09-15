@@ -1,13 +1,13 @@
 @import '../palette.scss';
 
-.ribbon {
+.header {
     position: relative;
     background: $primary;
     min-height: 24px;
     user-select: none;
 }
 
-.ribbon-tabs {
+.header-tabs {
     display: block;
     height: 24px;
 }
@@ -27,7 +27,7 @@
     pointer-events: none;
 }
 
-.ribbon-tab {
+.header-tab {
     display: inline-block;
     height: 100%;
     text-align: center;
@@ -45,7 +45,7 @@
     }
     &.active, .active:hover {
         color: $primary;
-        background: $ribbon-active;
+        background: $toolbar-active;
     }
 }
 
@@ -104,33 +104,33 @@
     }
 }
 
-.ribbon-toolbar {
+.header-toolbar {
     display: block;
     height: 92px;
-    background: $ribbon-active;
-    border-bottom: 1px solid darken($ribbon-active, 11);
+    background: $toolbar-active;
+    border-bottom: 1px solid darken($toolbar-active, 11);
     cursor: default;
     overflow-y: auto;
 }
 
-.ribbon-toolbar-section {
+.header-toolbar-section {
     padding: 0px 4px;
     float: left;
     position: relative;
     height: calc(100% - 8px);
     margin: 4px 0px;
-    border-right: 1px solid darken($ribbon-active, 11);
+    border-right: 1px solid darken($toolbar-active, 11);
     & > * {
         float: left;
     }
 }
 
-.ribbon-toolbar-column {
+.header-toolbar-column {
     margin: 0px 2px;
     float: left;
 }
 
-.ribbon-toolbar-row {
+.header-toolbar-row {
     float: none;
     margin: 8px 0px;
     display: block;
@@ -152,22 +152,22 @@
 .divider {
     width: 0px;
     height: 24px;
-    border-left: 1px solid darken($ribbon-active, 11);
+    border-left: 1px solid darken($toolbar-active, 11);
     margin: 0px 5px;
 }
 
-.ribbon-toolbar-select {
+.header-toolbar-select {
     vertical-align: top;
     height: 22px;
 }
 
-.ribbon-toolbar-button {
+.header-toolbar-button {
     height: 22px;
     background: none;
     border: none;
     font-size: 12px;
     line-height: 22px;
-    color: darken($ribbon-active, 70);
+    color: darken($toolbar-active, 70);
     padding: 0px 0px 0px 0px;
     &:hover {
         background: rgba(0,0,0,0.2);
@@ -190,7 +190,7 @@
                 right: 0px;
             }
         }
-        &.ribbon-toolbar-column {
+        &.header-toolbar-column {
         position: relative;
         padding: 0px;
         height: calc(100% - 20px);
@@ -219,7 +219,7 @@
     }
 }
 
-.ribbon-toolbar-button-expand {
+.header-toolbar-button-expand {
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -240,7 +240,7 @@
     }
 }
 
-.ribbon-toolbar-section-title {
+.header-toolbar-section-title {
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -248,7 +248,7 @@
     text-align: center;
     font-size: 11px;
     cursor: default;
-    color: darken($ribbon-active, 60);
+    color: darken($toolbar-active, 60);
 }
 
 @media screen and (max-width: 1060px) {

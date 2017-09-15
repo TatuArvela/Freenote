@@ -1,15 +1,15 @@
 import { h, Component } from 'preact'
 import ToolbarEdit from './ToolbarEdit'
 
-export default class Ribbon extends Component {
+export default class Header extends Component {
     render() {
         return (
-            <div class="ribbon">
-                <div class="ribbon-tabs">
+            <div class="header">
+                <div class="header-tabs">
                     <h1 class="window-title">Development - Freenote</h1>
 
-                    <div class="ribbon-tab active">Edit</div>
-                    <div class="ribbon-tab">View</div>
+                    <div class="header-tab active">Edit</div>
+                    <div class="header-tab">View</div>
                     <div class="search"><i class="material-icons">search</i><input type="text" placeholder="Search..."/></div>
                     
                     <div class="user-name">Arvela, Tatu</div>
@@ -17,18 +17,18 @@ export default class Ribbon extends Component {
 
                 <ToolbarEdit />
                 
-                {/* <div class="ribbon-toolbar">
-                    <div class="ribbon-toolbar-section">
+                {/* <div class="header-toolbar">
+                    <div class="header-toolbar-section">
                         Select board, New board
-                        <p class="ribbon-toolbar-section-title">Boards</p>
+                        <p class="header-toolbar-section-title">Boards</p>
                     </div>
-                    <div class="ribbon-toolbar-section">
+                    <div class="header-toolbar-section">
                         Show tag, New tag
-                        <p class="ribbon-toolbar-section-title">Tags</p>
+                        <p class="header-toolbar-section-title">Tags</p>
                     </div>
-                    <div class="ribbon-toolbar-section">
+                    <div class="header-toolbar-section">
                         Rows, List
-                        <p class="ribbon-toolbar-section-title">Display</p>
+                        <p class="header-toolbar-section-title">Display</p>
                     </div>
                 </div> */}
             </div>
