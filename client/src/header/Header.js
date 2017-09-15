@@ -12,7 +12,7 @@ export default class Header extends Component {
                     <div class="header-tab">View</div>
                     <div class="search"><i class="material-icons">search</i><input type="text" placeholder="Search..."/></div>
                     
-                    <div class="user-name">Arvela, Tatu</div>
+                    <div class="user-name">Tatu Arvela</div>
                 </div>
 
                 <ToolbarEdit />

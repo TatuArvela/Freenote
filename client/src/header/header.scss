@@ -3,13 +3,14 @@
 .header {
     position: relative;
     background: $primary;
-    min-height: 24px;
+    min-height: 30px;
     user-select: none;
 }
 
 .header-tabs {
     display: block;
-    height: 24px;
+    height: 30px;
+    line-height: 18px;
 }
 
 .window-title {
@@ -17,11 +18,10 @@
     top: 0px;
     left: 0px;
     right: 0px;
-    height: 24px;
+    height: 30px;
     text-align: center;
     font-size: 12px;
     padding: 6px 12px;
-    font-size: 12px;
     color: $primary-text;
     cursor: default;
     pointer-events: none;
@@ -29,6 +29,7 @@
 
 .header-tab {
     display: inline-block;
+    vertical-align: top;
     height: 100%;
     text-align: center;
     margin: 0px 1px;
@@ -54,6 +55,7 @@
     height: 100%;
     width: 200px;
     color: $primary-text;
+    margin: 0px 1px;
     &:hover {
         background: darken($primary, 8);
     }
@@ -62,12 +64,12 @@
     }
     & > i {
         float: left;
-        width: 24px;
+        width: 30px;
         text-align: center;
         cursor: default;
-        padding: 3px;
+        padding: 2px;
         height: 100%;
-        font-size: 18px;
+        font-size: 24px;
     }
     & > input {
         height: 100%;
@@ -76,6 +78,7 @@
         border: none;
         color: $primary-text;
         font-size: 12px;
+        font-family: "Noto Sans";
         user-select: text;
         &:focus {
             outline: none;
@@ -106,7 +109,7 @@
 
 .header-toolbar {
     display: block;
-    height: 92px;
+    height: 90px;
     background: $toolbar-active;
     border-bottom: 1px solid darken($toolbar-active, 11);
     cursor: default;
@@ -114,11 +117,10 @@
 }
 
 .header-toolbar-section {
-    padding: 0px 4px;
+    padding: 4px 4px;
     float: left;
     position: relative;
-    height: calc(100% - 8px);
-    margin: 4px 0px;
+    height: 90px;
     border-right: 1px solid darken($toolbar-active, 11);
     & > * {
         float: left;
@@ -126,17 +128,15 @@
 }
 
 .header-toolbar-column {
+    height: 60px;
     margin: 0px 2px;
     float: left;
 }
 
 .header-toolbar-row {
     float: none;
-    margin: 8px 0px;
+    margin: 4px 0px 8px 0px;
     display: block;
-    &:first-of-type {
-        margin: 4px 0px;
-    }
     &.compact {
         margin: 0px;
     }
@@ -193,7 +193,7 @@
         &.header-toolbar-column {
         position: relative;
         padding: 0px;
-        height: calc(100% - 20px);
+        height: 60px;
         width: 40px;
         overflow: hidden;
         & > i {
@@ -214,7 +214,7 @@
             left: 0px;
             right: 0px;
             word-break: break-word;
-            line-height: 16px;
+            line-height: 15px;
         }
     }
 }
@@ -224,7 +224,7 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .colorbox {
@@ -242,7 +242,7 @@
 
 .header-toolbar-section-title {
     position: absolute;
-    bottom: 0px;
+    bottom: 4px;
     left: 0px;
     right: 0px;
     text-align: center;
