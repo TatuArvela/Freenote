@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-@import '../ribbon/ribbon.scss';
+@import '../header/header.scss';
 @import '../note/note.scss';
 
 * {
@@ -18,6 +18,6 @@
     left: 0px;
     right: 0px;
     font-family: "Noto Sans";
-    background: rgb(230, 230, 230);
+    background: $background;
     border: 1px solid $primary;
 }
