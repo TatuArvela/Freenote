@@ -8,8 +8,8 @@ export default class Header extends Component {
                 <div class="header-tabs">
                     <h1 class="window-title">Development - Freenote</h1>
 
-                    <div class="header-tab active">Edit</div>
-                    <div class="header-tab">View</div>
+                    <a href="#" class="header-tab active">Edit</a>
+                    <a href="#" class="header-tab">View</a>
                     <div class="search"><i class="material-icons">search</i><input type="text" placeholder="Search..."/></div>
                     
                     <div class="user-name">Tatu Arvela</div>
