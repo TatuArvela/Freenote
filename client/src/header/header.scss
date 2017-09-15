@@ -37,6 +37,7 @@
     min-width: 62px;
     font-size: 12px;
     color: $primary-text;
+    text-decoration: none;
     cursor: default;
     &:nth-of-type(1) {
         margin-left: 0px;
@@ -109,9 +110,8 @@
 
 .header-toolbar {
     display: block;
-    height: 90px;
+    height: 70px;
     background: $toolbar-active;
-    border-bottom: 1px solid darken($toolbar-active, 11);
     cursor: default;
     overflow-y: auto;
 }
@@ -120,7 +120,7 @@
     padding: 4px 4px;
     float: left;
     position: relative;
-    height: 90px;
+    height: 100%;
     border-right: 1px solid darken($toolbar-active, 11);
     & > * {
         float: left;
@@ -238,17 +238,6 @@
         right: 4px;
         bottom: 4px;
     }
-}
-
-.header-toolbar-section-title {
-    position: absolute;
-    bottom: 4px;
-    left: 0px;
-    right: 0px;
-    text-align: center;
-    font-size: 11px;
-    cursor: default;
-    color: darken($toolbar-active, 60);
 }
 
 @media screen and (max-width: 1060px) {

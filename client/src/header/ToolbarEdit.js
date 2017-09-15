@@ -40,7 +40,6 @@ export default class ToolbarEdit extends Component {
                         <span class="button-title">Tags</span>
                         <span class="material-icons header-toolbar-button-expand">expand_more</span>
                     </button>
-                    <p class="header-toolbar-section-title">Notes</p>
                 </div>
                 <div class="header-toolbar-section">
                     <div class="header-toolbar-column">
@@ -62,7 +61,6 @@ export default class ToolbarEdit extends Component {
                             </button>
                         </span>
                     </div>
-                    <p class="header-toolbar-section-title">Font</p>
                 </div>
                 <div class="header-toolbar-section">
                     <div class="header-toolbar-column">
@@ -75,7 +73,6 @@ export default class ToolbarEdit extends Component {
                             <button class="header-toolbar-button"><i class="material-icons">warning</i>Testing widths</button>
                         </span>
                     </div>
-                    <p class="header-toolbar-section-title">Test</p>
                 </div>
             </div>
         )
