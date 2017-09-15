@@ -43,34 +43,38 @@ export default class ToolbarEdit extends Component {
                     <p class="header-toolbar-section-title">Notes</p>
                 </div>
                 <div class="header-toolbar-section">
-                    <span class="header-toolbar-row">
-                        <select class="header-toolbar-select">
-                            <option>Noto Sans</option>
-                        </select>&nbsp;
-                        <select class="header-toolbar-select">
-                            <option>12</option>
-                        </select>
-                    </span>
-                    <span class="header-toolbar-row">
-                        <button class="header-toolbar-button small"><i class="material-icons">format_bold</i></button>
-                        <button class="header-toolbar-button small"><i class="material-icons">format_italic</i></button>
-                        <button class="header-toolbar-button small"><i class="material-icons">format_underline</i></button>
-                        <div class="divider"></div>
-                        <button class="header-toolbar-button small">
-                            <i class="material-icons">colorize<div class="colorbox"></div></i>
-                        </button>
-                    </span>
+                    <div class="header-toolbar-column">
+                        <span class="header-toolbar-row">
+                            <select class="header-toolbar-select">
+                                <option>Noto Sans</option>
+                            </select>&nbsp;
+                            <select class="header-toolbar-select">
+                                <option>12</option>
+                            </select>
+                        </span>
+                        <span class="header-toolbar-row">
+                            <button class="header-toolbar-button small"><i class="material-icons">format_bold</i></button>
+                            <button class="header-toolbar-button small"><i class="material-icons">format_italic</i></button>
+                            <button class="header-toolbar-button small"><i class="material-icons">format_underline</i></button>
+                            <div class="divider"></div>
+                            <button class="header-toolbar-button small">
+                                <i class="material-icons">colorize<div class="colorbox"></div></i>
+                            </button>
+                        </span>
+                    </div>
                     <p class="header-toolbar-section-title">Font</p>
                 </div>
                 <div class="header-toolbar-section">
-                    <span class="header-toolbar-row">
-                        <select class="header-toolbar-select full-width">
-                            <option>Test</option>
-                        </select>
-                    </span>
-                    <span class="header-toolbar-row">
-                        <button class="header-toolbar-button"><i class="material-icons">warning</i>Testing widths</button>
-                    </span>
+                    <div class="header-toolbar-column">
+                        <span class="header-toolbar-row">
+                            <select class="header-toolbar-select full-width">
+                                <option>Test</option>
+                            </select>
+                        </span>
+                        <span class="header-toolbar-row">
+                            <button class="header-toolbar-button"><i class="material-icons">warning</i>Testing widths</button>
+                        </span>
+                    </div>
                     <p class="header-toolbar-section-title">Test</p>
                 </div>
             </div>
