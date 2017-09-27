@@ -3,7 +3,7 @@
 Freenote is an open-source note-taking application. It consists of two separate applications; a client and a server.
 
 ## Client
-The client's user interface mixes tabbed toolbars with Google's Material Design. It is built upon a stack of great open-source frameworks, including Node.js, Webpack, Babel, Preact, Redux and Sass.
+The client's user interface mixes tabbed toolbars with Google's Material Design. It is built upon a stack of great open-source frameworks, including Node.js, Preact, Webpack, Babel, Redux and Sass.
 
 Credit must be given to these sample projects, as they were greatly helpful in starting the project: 
 * https://github.com/developit/zero-to-preact
@@ -11,13 +11,14 @@ Credit must be given to these sample projects, as they were greatly helpful in s
 
 ### Upcoming features
 #### Development
-* Refactor store and reducers
 * Login / Logout mockup actions
 * Toolbar switching function
+* Migration from Preact to React 16
+* Migration to TypeScript
+* Reimplement Redux
 
 #### To-do
 * Note synchronization with server
-* TypeScript
 * Login / Logout implementation with server
 * Search
 * User details
