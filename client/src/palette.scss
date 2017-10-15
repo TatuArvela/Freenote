@@ -8,8 +8,9 @@ $muted: rgb(150, 150, 150);
 
 $toolbar-active: #F5F5F5;
 
-$paper-background: rgb(255, 255, 255);
-$paper-text: rgb(0, 0, 0);
+$note-background: white;
+// cyan, yellow, magenta, lime
+$note-text: rgb(0, 0, 0);
 
 .green {
     color: $green500;
