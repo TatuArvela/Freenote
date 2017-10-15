@@ -22,21 +22,6 @@ class Header extends React.Component {
                 </div>
 
                 <Toolbars />
-                
-                {/* <div class="header-toolbar">
-                    <div class="header-toolbar-section">
-                        Select board, New board
-                        <p class="header-toolbar-section-title">Boards</p>
-                    </div>
-                    <div class="header-toolbar-section">
-                        Show tag, New tag
-                        <p class="header-toolbar-section-title">Tags</p>
-                    </div>
-                    <div class="header-toolbar-section">
-                        Rows, List
-                        <p class="header-toolbar-section-title">Display</p>
-                    </div>
-                </div> */}
             </div>
         );
     }
