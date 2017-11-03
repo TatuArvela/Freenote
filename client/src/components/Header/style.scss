@@ -162,14 +162,14 @@
     padding-left: 5px;
     padding-right: 24px;
     color: darken($toolbar-active, 70);
-    background: url("../../keyboard_arrow_down.svg") no-repeat right transparent;
+    background: url("../../images/keyboard_arrow_down.svg") no-repeat right transparent;
     border: none;
     border-radius: 2px;
     -moz-appearance: none;
     -webkit-appearance: none;
     &:hover,
     &:focus {
-        background: url("../../keyboard_arrow_down.svg") no-repeat right rgba(0,0,0,0.2);
+        background: url("../../images/keyboard_arrow_down.svg") no-repeat right rgba(0,0,0,0.2);
         outline: none;
     }
 }

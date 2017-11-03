@@ -9,14 +9,11 @@ Freenote is an open-source note-taking application. It consists of two separate 
 The client's user interface mixes tabbed toolbars with Google's Material Design. 
 
 ### Ingredients and recipes
-The base for the client was created using **create-react-app** with **TypeScript** scripts.
-
-The project was ejected (&#9167;), so **Sass** could be configured to **Webpack** without any funny business.
+The base for the client was created using **create-react-app**, and ejected (&#9167;) so **Sass** could be configured to **Webpack** without any funny business.
 
 Other additions have been **Redux**, **React Router** and **Redux Thunk**.
 
 I used these guides as reference:
-* https://github.com/Microsoft/TypeScript-React-Starter
 * https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f
 * http://redux.js.org/docs/basics/ExampleTodoList.html
 
