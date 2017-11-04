@@ -1,0 +1,275 @@
+@import '../../palette.scss';
+
+/* Header
+------------------------------*/
+
+.header {
+  position: relative;
+  background: $primary;
+  padding-top: 2px;
+  min-height: 30px;
+  user-select: none;
+}
+
+.header-tabs {
+  position: relative;
+  display: block;
+  height: 30px;
+  line-height: 18px;
+}
+
+.window-title {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 30px;
+  text-align: center;
+  font-size: 12px;
+  padding: 6px 12px;
+  color: $primary-text;
+  cursor: default;
+  pointer-events: none;
+}
+
+.header-tab {
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+  text-align: center;
+  margin: 0px 2px;
+  padding: 6px 12px;
+  min-width: 62px;
+  font-size: 12px;
+  color: $primary-text;
+  text-decoration: none;
+  cursor: default;
+  border-radius: 2px 2px 0px 0px;
+  &:nth-of-type(1) {
+    margin-left: 5px;
+  }
+  &:hover,
+  &:focus {
+    background: lighten($primary, 8);
+    outline: none;
+  }
+  &.active, .active:hover {
+    color: $primary;
+    background: $toolbar-active;
+  }
+}
+
+.search {
+  display: inline-block;
+  height: 100%;
+  width: 200px;
+  color: $primary-text;
+  margin: 0px 5px;
+  &:hover,
+  &:focus-within {
+    background: darken($primary, 8);
+  }
+  & > i {
+    float: left;
+    width: 30px;
+    text-align: center;
+    cursor: default;
+    padding: 2px;
+    height: 100%;
+    font-size: 24px;
+  }
+  & > input {
+    height: 100%;
+    padding: 0%;
+    background: none;
+    border: none;
+    color: $primary-text;
+    font-size: 12px;
+    font-family: "Noto Sans";
+    user-select: text;
+    &:focus {
+      outline: none;
+    }
+    &::-webkit-input-placeholder {
+      color: $primary-text;
+    }
+    &:-ms-input-placeholder {
+      color: $primary-text;
+    }
+    &::-moz-placeholder {
+      color: $primary-text;
+    }
+  }
+}
+
+.user-name {
+  height: 100%;
+  float: right;
+  font-size: 12px;
+  color: $primary-text;
+  padding: 6px 12px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+/* Toolbars
+------------------------------*/
+
+.header-toolbar {
+  display: block;
+  height: 70px;
+  background: $toolbar-active;
+  cursor: default;
+  // overflow-y: auto;
+}
+
+.header-toolbar-section {
+  float: left;
+  position: relative;
+  height: 100%;
+  padding: 5px;
+  border-right: 1px solid darken($toolbar-active, 11);
+  &:last-of-type {
+    border-right: none;
+  }
+}
+
+.header-toolbar-column {
+  float: left;
+  height: 100%;
+}
+
+.header-toolbar-row {
+  float: none;
+  display: block;
+  height: 30px;
+  & > * {
+    float: left;
+    height: 24px;
+    margin: 3px 2px;
+    vertical-align: top;
+    font-size: 12px;
+    line-height: 24px;
+  }
+}
+
+.divider {
+  display: inline-block;
+  width: 0px;
+  border-left: 1px solid darken($toolbar-active, 11);
+}
+
+.header-toolbar-select {
+  padding-left: 5px;
+  padding-right: 24px;
+  color: darken($toolbar-active, 70);
+  background: url("../../images/keyboard_arrow_down.svg") no-repeat right transparent;
+  border: none;
+  border-radius: 2px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  &:hover,
+  &:focus {
+    background: url("../../images/keyboard_arrow_down.svg") no-repeat right rgba(0,0,0,0.2);
+    outline: none;
+  }
+}
+
+.header-toolbar-button {
+  padding: 0px 5px 0px 5px;
+  margin-right: 2px;
+  color: darken($toolbar-active, 70);
+  background: none;
+  border: none;
+  border-radius: 2px;
+  & > i {
+    float: left;
+    margin-left: -2px;
+    margin-top: 1px;
+    width: 20px;
+    line-height: 24px;
+    font-size: 17px;
+  }
+  &:hover,
+  &:focus {
+    background: rgba(0,0,0,0.2);
+    outline: none;
+  }
+  
+  &.small {
+    position: relative;
+    width: 24px;
+    display: inline-block;
+    & > i {
+      position: absolute;
+      width: 24px;
+      margin: 0px;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+    }
+  }
+  
+  &.big {
+    position: relative;
+    padding: 0px;
+    height: 60px;
+    width: 40px;
+    overflow: hidden;
+    & > i {
+      display: inline-block;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      width: 30px;
+      height: 30px;
+      margin: auto;
+      font-size: 24px;
+      line-height: 30px;
+    }
+    & > .button-title {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      font-size: 12px;
+      line-height: 14px;
+      word-break: break-word;
+      vertical-align: top;
+    }
+    & > .button-expand {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      font-size: 15px;
+    }
+  }
+}
+
+.colorbox {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 20%;
+  height: 20%;
+  background: purple;
+  .small > i > & {
+    right: 4px;
+    bottom: 4px;
+  }
+}
+
+.full-width {
+  width: calc(100% - 4px);
+}
+
+@media screen and (max-width: 550px) {
+  .window-title, .search {
+    display: none;
+  }
+}

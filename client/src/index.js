@@ -1,16 +1,25 @@
-import { h, render } from 'preact';
-import { Provider } from 'preact-redux';
-import store from './app/store';
-import App from './app/App';
-import Login from './login/Login';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'react-router-redux';
+import { Route } from 'react-router-dom';
 
-var loggedIn = true;
+import store, { history } from './store';
+import App from './views/App'
+import Login from './views/Login';
 
-render((
-    <Provider store={store}>
-        <div id="preact">
-            {!loggedIn && <Login />}
-            {loggedIn && <App />}
-        </div>
-    </Provider>
-), document.body);
+import './index.scss';
+
+const target = document.querySelector('#root');
+
+render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <div>
+        <Route exact path="/" component={App} />
+        <Route exact path="/login" component={Login} />
+      </div>
+    </ConnectedRouter>
+  </Provider>,
+  target
+)
