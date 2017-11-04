@@ -1,15 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Note = ({ onClickDelete, onTextChange, deleted, text }) => (
+const Note = ({ onClickDelete, onTitleChange, onTextChange, deleted, text }) => (
   <div className="note">
     <div className="note-content">
-      <input className="note-title"/>
+      <input
+        className="note-title"
+        onChange={ onTitleChange }
+      />
       <textarea
         className="note-textarea"
         style={{ textDecoration: deleted ? 'line-through' : 'none' }}
         value={ text }
         onChange={ onTextChange }
+        placeholder="Write a note..."
       >
       </textarea>
     </div>
@@ -26,8 +30,10 @@ const Note = ({ onClickDelete, onTextChange, deleted, text }) => (
 
 Note.propTypes = {
   onClickDelete: PropTypes.func.isRequired,
+  onTitleChange: PropTypes.func.isRequired,
   onTextChange: PropTypes.func.isRequired,
   deleted: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired
 }
 

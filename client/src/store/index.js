@@ -8,6 +8,7 @@ import reducers from '../reducers';
 export const history = createHistory();
 
 const initialState = {};
+
 const middleware = [
   thunk,
   routerMiddleware(history)

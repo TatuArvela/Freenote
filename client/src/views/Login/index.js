@@ -20,7 +20,7 @@ const Login = () => (
 
       <div className="login-footer">
         <p>&copy; 2017 Tatu Arvela</p>
-        <a href="#">Password renewal</a>
+        <a>Password renewal</a>
       </div>
     </div>
   </div>
