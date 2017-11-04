@@ -1,44 +1,74 @@
-![Freenote icon](client/src/logo.png?raw=true "Freenote")
+![Freenote icon](./logo.png?raw=true "Freenote")
 
-Freenote is an open-source note-taking application. It consists of two separate applications; a client and a server.
+Freenote is an open-source note-taking application. It consists of two separate parts: a web client and a server.
+
+The main goal of this project is to make a working sample application using modern technologies.
+
+## Demo server
+Both parts of the application will be deployed on a Digital Ocean demo server using Jenkins CI.
+
+
 
 ## Client
-The client's user interface mixes tabbed toolbars with Google's Material Design. It is built upon a stack of great open-source frameworks, including Node.js, Preact, Webpack, Babel, Redux and Sass.
 
-Credit must be given to these sample projects, as they were greatly helpful in starting the project: 
-* https://github.com/developit/zero-to-preact
-* https://github.com/developit/preact-redux-example
+The web client uses the following technologies:
 
-### Upcoming features
-#### Development
-* Login / Logout mockup actions
-* Toolbar switching function
-* Migration from Preact to React 16
-* Migration to TypeScript
-* Reimplement Redux
+* Webpack
+* React
+* Redux
+* React Router
+* Redux Thunk
+* Sass
 
-#### To-do
-* Note synchronization with server
-* Login / Logout implementation with server
-* Search
-* User details
-* Checklists
-* Multiple stacks
-* Undo
-* Tags
-* Text formatting
-* Localization
-* Drag to reorder
-* Pinning
-* Archiving
-* Adding pictures
+The web client's user interface is a mix of Google's Material Design and a tabbed toolbar.
+
+I found these tutorials very helful:
+* https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f
+* http://redux.js.org/docs/basics/ExampleTodoList.html
+
+### Features
+* Tabbed toolbar
+* Adding and deleting notes
+* Login view
+
+#### In development
+* Login / Logout mockup
+* Toolbar switching
+
+#### Backlog
+<details>
+  <summary>Expand/Collapse</summary>
+
+  * Testing implementation (Mocha & Chai)
+  * User details
+  * Undo
+  * Drag to reorder
+  * Pinning
+  * Text formatting
+  * Localization
+  * Note synchronization with server
+  * Login / Logout implementation with server
+  * Search
+  * Checklists
+  * Multiple stacks
+  * Archiving
+  * Tags
+  * Adding pictures
+</details>
+
+
 
 ## Server
-The server provides a REST API for authentication using OAuth 2 and JSON Web Tokens, and a WebSocket service for interacting with the MongoDB database.
+The server will provide a REST API for authentication using OAuth 2 and JSON Web Tokens, and a WebSocket service for interacting with the MongoDB database. It will also use TypeScript for type validation.
 
-### Upcoming features
-#### To-do
-* Server configuration
-* Basic server features
-* Login mockup service
-* Save mockup service
+### Features
+
+#### Backlog
+<details>
+  <summary>Expand/Collapse</summary>
+
+  * Server configuration
+  * Basic server features
+  * Login mockup service
+  * Save mockup service
+</details>
