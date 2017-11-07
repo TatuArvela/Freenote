@@ -1,8 +1,8 @@
 let initial = [
   {
-    id: 0,
-    title: "Otsikko",
-    text: "Teksti",
+    id: -1,
+    title: "Title",
+    text: "Text",
     deleted: false
   }
 ]
