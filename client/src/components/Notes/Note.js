@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Note = ({ onClickDelete, onTitleChange, onTextChange, deleted, text }) => (
+const Note = ({ onClickDelete, onTitleChange, onTextChange, deleted, title, text }) => (
   <div className="note">
     <div className="note-content">
       <input
         className="note-title"
+        value={ title }
         onChange={ onTitleChange }
       />
       <textarea
