@@ -1,12 +1,19 @@
 const express = require('express')
 
 const server = express()
-const helloController = require('./controllers/hello')
+const config = require('./config')
+const apiController = require('./controllers/api')
 
-const port = 4000
 
-server.use(helloController)
+// CONFIGURATION
+const port = config.port
 
+
+// CONTROLLERS
+server.use(apiController)
+
+
+// START
 server.listen(port, () => {
   console.log('Server listening on http://localhost:' + port + '/')
 })
