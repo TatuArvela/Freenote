@@ -17,12 +17,6 @@ const EditToolbar = ({ addNote }) => (
       </button>
 
       <button className="header-toolbar-button big">
-        <i className="material-icons">layers</i>
-        <span className="button-title">Stack</span>
-        <span className="material-icons button-expand">expand_more</span>
-      </button>
-
-      <button className="header-toolbar-button big">
         <i className="material-icons">local_offer</i>
         <span className="button-title">Tags</span>
         <span className="material-icons button-expand">expand_more</span>
