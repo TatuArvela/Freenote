@@ -20,7 +20,6 @@ const notes = (state = [], action) => {
       )
 
     case 'CHANGE_TITLE':
-      console.log(action)
       return state.map(note =>
         (note.id === action.id)
           ? {...note, title: action.value}
@@ -28,7 +27,6 @@ const notes = (state = [], action) => {
       )
 
     case 'CHANGE_TEXT':
-      console.log(action)
       return state.map(note =>
         (note.id === action.id)
           ? {...note, text: action.value}
