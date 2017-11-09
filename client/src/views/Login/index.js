@@ -5,7 +5,7 @@ import './style.scss';
 const Login = () => (
   <div className="login">
     <div className="login-main">
-      <img className="login-header" src="../../images/logo.png" alt="Freenote"/>
+      <img className="login-header" src={require('../../images/logo.png')} alt="Freenote"/>
 
       <form className="login-form">
         <p className="login-message">Sign in with your username and password</p>

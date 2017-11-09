@@ -16,7 +16,7 @@ let AddNote = ({ addNote }) => {
       className="header-toolbar-button big"
       onClick={addNote}
     >
-      <i className="material-icons green">note_add</i>
+      <i className="material-icons">note_add</i>
       <span className="button-title">New Note</span>
     </button>
   )
