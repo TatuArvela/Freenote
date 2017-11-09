@@ -1,17 +1,37 @@
 import React from 'react'
-import Toolbars from './Toolbars'
+import { connect } from 'react-redux'
+import { switchTab } from '../../actions/toolbar'
+import Edit from './Edit';
+import View from './View';
 import './style.scss';
 
-const Header = () => (
+const mapStateToProps = state => {
+  return {
+    toolbar: state.toolbar
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    switchTab: (tab) => {
+      dispatch(switchTab(tab))
+    }
+  }
+}
+
+let Header = ({ toolbar, switchTab }) => (
   <div className="header">
     <div className="header-tabs">
         <h1 className="window-title">Development - Freenote</h1>
 
         <a
-          className="header-tab active"
+          className={`header-tab ${toolbar === 'EDIT' ? 'active' : ''}`}
+          onClick={() => switchTab('EDIT')}
         >Edit</a>
+
         <a
-          className="header-tab"
+          className={`header-tab ${toolbar === 'VIEW' ? 'active' : ''}`}
+          onClick={() => switchTab('VIEW')}
         >View</a>
 
         <div className="search">
@@ -22,8 +42,20 @@ const Header = () => (
         <div className="user-name">Tatu Arvela</div>
     </div>
 
-    <Toolbars />
+    {toolbar === "EDIT" &&
+      <Edit />
+    }
+
+    {toolbar === "VIEW" &&
+      <View />
+    }
+
   </div>
 )
+
+Header = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header)
 
 export default Header

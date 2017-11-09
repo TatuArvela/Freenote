@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addNote } from '../../../../actions/notes'
+import { addNote } from '../../../actions/notes'
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
