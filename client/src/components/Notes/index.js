@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-
 import { toggleDelete, changeTitle, changeText } from '../../actions/notes'
 import NoteList from './NoteList'
 

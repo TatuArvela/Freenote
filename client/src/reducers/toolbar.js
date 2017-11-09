@@ -1,9 +1,12 @@
 const toolbar = (state = 'EDIT', action) => {
   switch (action.type) {
+
     case 'SWITCH_TAB':
-      return action.filter
+      return action.tab
+
     default:
       return state
+
   }
 }
 

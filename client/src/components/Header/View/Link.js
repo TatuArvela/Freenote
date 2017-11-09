@@ -4,22 +4,24 @@ import PropTypes from 'prop-types'
 const Link = ({ active, children, onClick }) => {
   if (active) {
     return (
-      <span>
+      <button
+        className="header-toolbar-button small active"
+      >
         {children}
-      </span>
+      </button>
     )
   }
 
   return (
-    <a
-      /* href="#" */
+    <button
+      className="header-toolbar-button small"
       onClick={e => {
         e.preventDefault()
         onClick()
       }}
     >
       {children}
-    </a>
+    </button>
   )
 }
 
