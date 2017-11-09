@@ -7,7 +7,7 @@ The main goal of this project is to make a working sample application using mode
 ## Demo server
 Both parts of the application will be deployed on a Digital Ocean demo server using Jenkins CI.
 
-## Client
+## Client (0.1.1)
 
 The web client uses the following technologies:
 
@@ -23,11 +23,12 @@ The web client's user interface is a mix of Google's Material Design and a tabbe
 I found these tutorials very helful:
 * https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f
 * http://redux.js.org/docs/basics/ExampleTodoList.html
+* https://github.com/reactjs/redux/blob/master/docs/advanced/ExampleRedditAPI.md
 
 ### Features
 * Tabbed toolbar
 * Adding and deleting notes
 * Login view
 
-## Server
+## Server (0.1.1)
 The server will provide a REST API for authentication using OAuth 2 and JSON Web Tokens, and a WebSocket service for interacting with the MongoDB database. It will also use TypeScript for type validation.

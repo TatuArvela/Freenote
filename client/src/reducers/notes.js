@@ -1,13 +1,4 @@
-let initial = [
-  {
-    id: -1,
-    title: "Title",
-    text: "Text",
-    deleted: false
-  }
-]
-
-const notes = (state = initial, action) => {
+const notes = (state = [], action) => {
   switch (action.type) {
 
     case 'ADD_NOTE':

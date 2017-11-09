@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { toggleDelete, changeTitle, changeText } from '../../actions'
+import { toggleDelete, changeTitle, changeText } from '../../actions/notes'
 import NoteList from './NoteList'
 
 const getVisibleNotes = (notes, filter) => {
