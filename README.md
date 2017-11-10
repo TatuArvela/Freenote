@@ -20,7 +20,7 @@ The web client uses the following technologies:
 
 The web client's user interface is a mix of Google's Material Design and a tabbed toolbar.
 
-I found these tutorials very helful:
+I found these tutorials very helpful:
 * https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f
 * http://redux.js.org/docs/basics/ExampleTodoList.html
 * https://github.com/reactjs/redux/blob/master/docs/advanced/ExampleRedditAPI.md
