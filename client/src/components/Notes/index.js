@@ -25,6 +25,7 @@ const getVisibleNotes = (state) => {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   const notes = {
     isFetching: state.notes.isFetching,
     items: getVisibleNotes(state),

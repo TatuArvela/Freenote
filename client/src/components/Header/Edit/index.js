@@ -1,11 +1,11 @@
 import React from 'react';
-import AddNote from './AddNote'
+import NewNote from './NewNote'
 
-const EditToolbar = ({ addNote }) => (
+const EditToolbar = () => (
   <div className="header-toolbar">
     <div className="header-toolbar-section">
 
-      <AddNote addNote={ addNote }/>
+      <NewNote/>
 
       {/* <button className="header-toolbar-button big">
         <i className="material-icons">

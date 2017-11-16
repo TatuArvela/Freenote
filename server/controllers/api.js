@@ -2,6 +2,15 @@ const express = require('express')
 const package = require('../package.json')
 const router = express.Router()
 
+var nextId = 1
+var entries = [
+  {
+    id: 0,
+    title: "Title",
+    text: "Text",
+    deleted: false
+  }
+]
 
 // HELLO
 router.get('/', function (req, res) {
@@ -13,14 +22,18 @@ router.get('/', function (req, res) {
 
 // GET ALL NOTES
 router.get('/notes', function (req, res) {
-  entries = [
-    {
-      id: -1,
-      title: "Title",
-      text: "Text",
-      deleted: false
-    }
-  ]
+  res.status(200).json(entries)
+})
+
+
+// CREATE NEW NOTE
+router.post('/notes/new', function (req, res) {
+  entries.push({
+    id: nextId++,
+    title: "",
+    text: "",
+    deleted: false
+  })
   res.status(200).json(entries)
 })
 
