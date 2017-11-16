@@ -1,15 +1,13 @@
-let nextNoteId = 0
-
-function requestNotes() {
+export const requestNotes = () => {
   return {
-    type: "REQUEST_POSTS",
+    type: "REQUEST_NOTES",
   }
 }
 
 export const receiveNotes = (json) => {
   return {
     type: "RECEIVE_NOTES",
-    posts: json,
+    items: json,
     receivedAt: Date.now()
   }
 }
@@ -25,12 +23,12 @@ export const fetchNotes = () => {
 
 export const shouldFetchNotes = (state) => {
   const notes = state.notes
-  if (!notes) {
+  if (!notes.lastUpdated) {
     return true
   } else if (notes.isFetching) {
     return false
   } else {
-    return true
+    return false
   }
 }
 
@@ -42,12 +40,14 @@ export const fetchNotesIfNeeded = () => {
   }
 }
 
-export const addNote = (title, text) => {
-  return {
-    type: 'ADD_NOTE',
-    id: nextNoteId++,
-    title: (title != null) ? title : "",
-    text: (text != null) ? text : ""
+export const newNote = () => {
+  return (dispatch, getState) => {
+    fetch(`http://localhost:4000/notes/new`, {
+      method: "POST"
+    })
+      .then(response => response.json())
+      .then(json => dispatch(receiveNotes(json)))
+    dispatch(fetchNotes())
   }
 }
 

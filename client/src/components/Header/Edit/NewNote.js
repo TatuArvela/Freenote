@@ -1,20 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addNote } from '../../../actions/notes'
+import { newNote } from '../../../actions/notes'
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    addNote: () => {
-      dispatch(addNote(null))
+    newNote: () => {
+      dispatch(newNote())
     }
   }
 }
 
-let AddNote = ({ addNote }) => {
+let NewNote = ({ newNote }) => {
   return (
     <button
       className="header-toolbar-button big"
-      onClick={addNote}
+      onClick={newNote}
     >
       <i className="material-icons">note_add</i>
       <span className="button-title">New Note</span>
@@ -22,9 +22,9 @@ let AddNote = ({ addNote }) => {
   )
 }
 
-AddNote = connect(
+NewNote = connect(
   null,
   mapDispatchToProps
-)(AddNote)
+)(NewNote)
 
-export default AddNote
+export default NewNote
