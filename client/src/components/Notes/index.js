@@ -1,9 +1,18 @@
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { toggleDelete, changeTitle, changeText } from '../../actions/notes'
-import NoteList from './NoteList'
+import { 
+  fetchNotesIfNeeded,
+  toggleDelete,
+  changeTitle,
+  changeText
+} from '../../actions/notes'
+import PropTypes from 'prop-types'
+import Note from './Note'
+import './style.scss';
 
-const getVisibleNotes = (notes, filter) => {
-  switch (filter) {
+const getVisibleNotes = (state) => {
+  const notes = state.notes.items
+  switch (state.filter) {
     case 'SHOW_ACTIVE':
       return notes.filter(n => !n.deleted)
     case 'SHOW_DELETED':
@@ -15,13 +24,18 @@ const getVisibleNotes = (notes, filter) => {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
+  const notes = {
+    isFetching: state.notes.isFetching,
+    items: getVisibleNotes(state),
+    lastUpdated: state.notes.lastUpdated
+  }
   return {
-    notes: getVisibleNotes(state.notes, state.visibilityFilter)
+    notes
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onClickDelete: id => {
       dispatch(toggleDelete(id))
@@ -31,13 +45,78 @@ const mapDispatchToProps = dispatch => {
     },
     onTextChange: (id, value) => {
       dispatch(changeText(id, value))
-    }
+    },
+    dispatch: dispatch
   }
 }
 
-const Notes = connect(
+class Notes extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(fetchNotesIfNeeded())
+  }
+
+  componentDidUpdate(prevProps) {
+    const { dispatch } = this.props
+    dispatch(fetchNotesIfNeeded())
+  }
+
+  render() {
+    const {
+      notes,
+      onClickDelete,
+      onTitleChange,
+      onTextChange
+    } = this.props
+
+    if (notes.isFetching && notes.items.length === 0)
+      return (
+        <h2>Loading...</h2>
+      )
+
+    else if (!notes.isFetching && notes.items.length === 0)
+      return (
+        <h2>Empty.</h2>
+      )
+
+    else if (notes.items.length > 0)
+      return (
+      <div className="notes">
+        <div className="notes-grid">
+          {[...notes.items].reverse().map(note => (
+            <Note
+              key={note.id}
+              {...note}
+              onClickDelete={() => onClickDelete(note.id)}
+              onTitleChange={(e) => onTitleChange(note.id, e.target.value)}
+              onTextChange={(e) => onTextChange(note.id, e.target.value)}
+            />
+          ))}
+        </div>
+      </div>
+      )
+  }
+}
+
+Notes.propTypes = {
+  notes: PropTypes.shape({
+    isFetching: PropTypes.bool.isRequired,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        deleted: PropTypes.bool.isRequired,
+        title: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired
+      }).isRequired
+    ).isRequired,
+  }).isRequired,
+  onClickDelete: PropTypes.func.isRequired,
+  onTitleChange: PropTypes.func.isRequired,
+  onTextChange: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
+}
+
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NoteList)
-
-export default Notes
+)(Notes)
