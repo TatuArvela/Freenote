@@ -1,3 +1,5 @@
+// TRANSPORT
+
 export const requestNotes = () => {
   return {
     type: "REQUEST_NOTES",
@@ -13,7 +15,8 @@ export const receiveNotes = (json) => {
 }
 
 export const fetchNotes = () => {
-  return dispatch => {
+  return (dispatch) => {
+    console.log("fetchNotes")
     dispatch(requestNotes())
     return fetch(`http://localhost:4000/notes`)
       .then(response => response.json())
@@ -21,62 +24,52 @@ export const fetchNotes = () => {
   }
 }
 
-export const shouldFetchNotes = (state) => {
-  const notes = state.notes
-  if (!notes.lastUpdated) {
-    return true
-  } else if (notes.isFetching) {
-    return false
-  } else {
-    return false
-  }
-}
 
-export const fetchNotesIfNeeded = () => {
-  return (dispatch, getState) => {
-    if (shouldFetchNotes(getState())) {
-      return dispatch(fetchNotes())
-    }
-  }
-}
+
+// ACTIONS
 
 export const newNote = () => {
-  return (dispatch, getState) => {
-    fetch(`http://localhost:4000/notes/new`, {
-      method: "POST"
-    })
-      .then(response => response.json())
-      .then(json => dispatch(receiveNotes(json)))
-    dispatch(fetchNotes())
-  }
+  fetch(`http://localhost:4000/notes`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  })
 }
 
-export const setVisibilityFilter = filter => {
-  return {
-    type: 'SET_VISIBILITY_FILTER',
-    filter
-  }
-}
-
-export const toggleDelete = id => {
-  return {
-    type: 'TOGGLE_DELETE',
-    id
-  }
+export const softDelete = (id) => {
+  fetch(`http://localhost:4000/notes/` + id, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  })
 }
 
 export const changeTitle = (id, value) => {
-  return {
-    type: 'CHANGE_TITLE',
-    id,
-    value
-  }
+  fetch(`http://localhost:4000/notes/` + id, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      title: value
+    })
+  })
 }
 
 export const changeText = (id, value) => {
-  return {
-    type: 'CHANGE_TEXT',
-    id,
-    value
-  }
+  fetch(`http://localhost:4000/notes/` + id, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      text: value
+    })
+  })
 }

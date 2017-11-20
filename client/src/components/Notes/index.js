@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { 
-  fetchNotesIfNeeded,
-  toggleDelete,
+  fetchNotes,
+  softDelete,
   changeTitle,
   changeText
 } from '../../actions/notes'
@@ -10,9 +10,11 @@ import PropTypes from 'prop-types'
 import Note from './Note'
 import './style.scss';
 
+// TODO: Clean up this mess
+
 const getVisibleNotes = (state) => {
   const notes = state.notes.items
-  switch (state.filter) {
+  switch (state.visibilityFilter) {
     case 'SHOW_ACTIVE':
       return notes.filter(n => !n.deleted)
     case 'SHOW_DELETED':
@@ -25,7 +27,6 @@ const getVisibleNotes = (state) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   const notes = {
     isFetching: state.notes.isFetching,
     items: getVisibleNotes(state),
@@ -38,34 +39,28 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClickDelete: id => {
-      dispatch(toggleDelete(id))
-    },
-    onTitleChange: (id, value) => {
-      dispatch(changeTitle(id, value))
-    },
-    onTextChange: (id, value) => {
-      dispatch(changeText(id, value))
-    },
     dispatch: dispatch
   }
 }
 
 class Notes extends Component {
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(fetchNotesIfNeeded())
-  }
+    const { socket, dispatch } = this.props
 
-  componentDidUpdate(prevProps) {
-    const { dispatch } = this.props
-    dispatch(fetchNotesIfNeeded())
+    socket.on('connect', function () {
+      socket.emit('connection')
+      dispatch(fetchNotes())
+
+      socket.on('pleaseFetch', function () {
+        dispatch(fetchNotes())
+      });
+    });
   }
 
   render() {
     const {
+      socket,
       notes,
-      onClickDelete,
       onTitleChange,
       onTextChange
     } = this.props
@@ -88,9 +83,9 @@ class Notes extends Component {
             <Note
               key={note.id}
               {...note}
-              onClickDelete={() => onClickDelete(note.id)}
-              onTitleChange={(e) => onTitleChange(note.id, e.target.value)}
-              onTextChange={(e) => onTextChange(note.id, e.target.value)}
+              onClickDelete={() => softDelete(note.id)}
+              onTitleChange={(e) => changeTitle(note.id, e.target.value)}
+              onTextChange={(e) => changeText(note.id, e.target.value)}
             />
           ))}
         </div>
@@ -111,9 +106,6 @@ Notes.propTypes = {
       }).isRequired
     ).isRequired,
   }).isRequired,
-  onClickDelete: PropTypes.func.isRequired,
-  onTitleChange: PropTypes.func.isRequired,
-  onTextChange: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
