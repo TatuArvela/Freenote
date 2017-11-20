@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 let Header = ({ toolbar, switchTab }) => (
   <div className="header">
     <div className="header-tabs">
-        <h1 className="window-title">Development - Freenote</h1>
+        <h1 className="window-title">Freenote</h1>
 
         <a
           className={`header-tab ${toolbar === 'EDIT' ? 'active' : ''}`}

@@ -1,4 +1,4 @@
-export const switchTab = tab => {
+export const switchTab = (tab) => {
   return {
     type: 'SWITCH_TAB',
     tab: tab

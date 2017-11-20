@@ -1,11 +1,13 @@
 {
-  "name": "server",
-  "version": "0.1.1",
+  "name": "freenote-server",
+  "version": "0.2.0",
   "main": "server.js",
   "author": "Tatu Arvela",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "cors": "^2.8.4",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
   }
 }
