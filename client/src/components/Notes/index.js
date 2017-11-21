@@ -59,10 +59,7 @@ class Notes extends Component {
 
   render() {
     const {
-      socket,
       notes,
-      onTitleChange,
-      onTextChange
     } = this.props
 
     if (notes.isFetching && notes.items.length === 0)

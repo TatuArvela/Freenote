@@ -4,8 +4,11 @@ Freenote is an open-source note-taking application. It consists of two separate 
 
 The main goal of this project is to make a working sample application using modern technologies.
 
+
 ## Demo server
+
 Both parts of the application will be deployed on a Digital Ocean demo server using Jenkins CI.
+
 
 ## Client (0.2.0)
 
@@ -32,6 +35,8 @@ I found these tutorials/projects very helpful:
 * Tabbed toolbar
 * Adding and deleting notes
 * Login view
+* Synchronization with server
+
 
 ## Server (0.2.0)
 
