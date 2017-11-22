@@ -21,6 +21,7 @@ The web client uses the following technologies:
 * Redux Thunk
 * Sass
 * Socket.io
+* Jest
 
 The web client's user interface is a mix of Google's Material Design and a tabbed toolbar.
 
@@ -45,5 +46,8 @@ The server uses the following technologies:
 * Node.js
 * Express
 * Socket.io
+* Chalk
+* Mocha
+* Chai
 
 The server will also provide a REST API for authentication using OAuth 2 and JSON Web Tokens, and a MongoDB database. It might also use TypeScript for type validation.

@@ -10,15 +10,20 @@ const server = http.Server(app)
 const io = socketIo(server)
 
 const config = require('./config')
+const utils = require('./utils')
 const apiController = require('./controllers/api')
 const socketController = require('./controllers/socket')
 // const noteModel = require('./models/noteModel')
 
 
 // INITIAL SERVER CONFIGURATION
-const port = config.port
+const port = parseInt(process.env.PORT, 10) || config.port
+const appName = config.appName
+
+
+// START SERVER
 server.listen(port, () => {
-  console.log('Server listening on http://localhost:' + port + '/')
+  utils.printHeader()
 })
 
 

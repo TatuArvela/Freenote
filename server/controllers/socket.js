@@ -1,16 +1,18 @@
+const chalk = require('chalk')
 const connections = []
 
 const socketController = function (io) {
 
   // CONNECT
   io.on('connection', (socket) => {
-    console.log('Connected to socket: ' + socket.id)
-    connections.push(socket)
+    var address = socket.conn.remoteAddress
 
+    console.log(chalk.green(chalk.bold('+     Connecting:  ') + socket.id + '  ' + address))
+    connections.push(socket)
 
     // DISCONNECT
     socket.on('disconnect', function(){
-      console.log('Disconnected from socket: '+ socket.id);
+      console.log(chalk.yellow(chalk.bold('-  Disconnecting:  ') + socket.id + '  ' + address))
     });
 
   })
