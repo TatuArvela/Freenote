@@ -1,5 +1,5 @@
 const express = require('express')
-const package = require('../package.json')
+const config = require('../config')
 const router = express.Router()
 
 const apiController = function(io, nextId, entries) {
@@ -7,7 +7,7 @@ const apiController = function(io, nextId, entries) {
   // HELLO
   router.get('/', function (req, res) {
     res.json({
-      message: 'Freenote Server v' + package.version
+      message: 'Freenote Server v' + config.version
     })
   })
 

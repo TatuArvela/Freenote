@@ -64,12 +64,12 @@ class Notes extends Component {
 
     if (notes.isFetching && notes.items.length === 0)
       return (
-        <h2>Loading...</h2>
+        <div class="notes-message">Loading notes...</div>
       )
 
     else if (!notes.isFetching && notes.items.length === 0)
       return (
-        <h2>Empty.</h2>
+        <div class="notes-message">Empty</div>
       )
 
     else if (notes.items.length > 0)

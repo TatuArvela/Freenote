@@ -1,13 +1,19 @@
 {
   "name": "freenote-server",
   "version": "0.2.0",
-  "main": "server.js",
   "author": "Tatu Arvela",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chalk": "^2.3.0",
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
     "socket.io": "^2.0.4"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
   }
 }
