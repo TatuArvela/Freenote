@@ -17,7 +17,7 @@ const socketController = require('./controllers/socket')
 
 
 // INITIAL SERVER CONFIGURATION
-const port = parseInt(process.env.PORT, 10) || config.port
+const port = config.port
 const appName = config.appName
 
 

@@ -12,7 +12,7 @@ function printHeader() {
   const localUrl = url.format({
     protocol: process.env.HTTPS === 'true' ? 'https' : 'http',
     hostname: 'localhost',
-    port: parseInt(process.env.PORT, 10) || config.port,
+    port: config.port,
     pathname: '/',
   });
 
