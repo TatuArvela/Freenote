@@ -5,12 +5,12 @@ Freenote is an open-source note-taking application. It consists of two separate 
 The main goal of this project is to make a working sample application using modern technologies.
 
 
-## Demo server
+## Production server
 
-Both parts of the application will be deployed on a Digital Ocean demo server using Jenkins CI.
+Both parts of the application will be deployed on a Digital Ocean server using Docker and Jenkins.
 
 
-## Client (0.2.0)
+## Client (0.2.1)
 
 The web client uses the following technologies:
 
@@ -39,7 +39,7 @@ I found these tutorials/projects very helpful:
 * Synchronization with server
 
 
-## Server (0.2.0)
+## Server (0.2.1)
 
 The server uses the following technologies:
 
