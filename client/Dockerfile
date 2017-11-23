@@ -6,6 +6,10 @@ ADD . /app
 
 RUN yarn install
 
-EXPOSE 3000
+RUN yarn build --production
 
-CMD ["yarn", "start"]
+RUN yarn global add serve
+
+EXPOSE 5000
+
+CMD serve -s build
