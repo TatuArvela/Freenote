@@ -1,6 +1,6 @@
 const config = {
   server: {
-    ip: 'localhost',
+    ip: 'tatuarvela.com',
     port: '4000'
   }
 }
