@@ -41,8 +41,8 @@ export const newNote = () => {
   })
 }
 
-export const softDelete = (id) => {
-  fetch(`${serverUrl}/notes/` + id, {
+export const softDelete = (_id) => {
+  fetch(`${serverUrl}/notes/` + _id, {
     method: 'DELETE',
     headers: {
       'Accept': 'application/json',
@@ -51,8 +51,8 @@ export const softDelete = (id) => {
   })
 }
 
-export const changeTitle = (id, value) => {
-  fetch(`${serverUrl}/notes/` + id, {
+export const changeTitle = (_id, value) => {
+  fetch(`${serverUrl}/notes/` + _id, {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
@@ -64,8 +64,8 @@ export const changeTitle = (id, value) => {
   })
 }
 
-export const changeText = (id, value) => {
-  fetch(`${serverUrl}/notes/` + id, {
+export const changeText = (_id, value) => {
+  fetch(`${serverUrl}/notes/` + _id, {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',

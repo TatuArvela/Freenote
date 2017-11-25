@@ -78,11 +78,11 @@ class Notes extends Component {
         <div className="notes-grid">
           {[...notes.items].reverse().map(note => (
             <Note
-              key={note.id}
+              key={note._id}
               {...note}
-              onClickDelete={() => softDelete(note.id)}
-              onTitleChange={(e) => changeTitle(note.id, e.target.value)}
-              onTextChange={(e) => changeText(note.id, e.target.value)}
+              onClickDelete={() => softDelete(note._id)}
+              onTitleChange={(e) => changeTitle(note._id, e.target.value)}
+              onTextChange={(e) => changeText(note._id, e.target.value)}
             />
           ))}
         </div>

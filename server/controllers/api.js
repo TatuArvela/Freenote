@@ -1,8 +1,9 @@
 const express = require('express')
+const Note = require('../models/note')
 const config = require('../config')
 const router = express.Router()
 
-const apiController = function(io, nextId, entries) {
+const apiController = function(io) {
 
   // HELLO
   router.get('/', function (req, res) {
@@ -12,62 +13,96 @@ const apiController = function(io, nextId, entries) {
   })
 
 
-
   // ALL
   router.route('/notes')
 
     // CREATE A NOTE
     .post(function (req, res) {
-      let newNote = {
-        id: nextId++,
-        title: "",
-        text: "",
+      let note = new Note({
+        user: 'test',
+        title: '',
+        text: '',
         deleted: false
-      }
-      entries.push(newNote)
+      })
 
-      res.json({ message: 'Created ' + newNote }).status(200)
-      io.emit('pleaseFetch')
+      note.save(function (err) {
+        if(err) {
+          console.error('POST: Error:', req.body, err)
+          res.status(400).send('POST: Error')
+          return false
+        }
+
+        console.log('POST: Created ' + note)
+        res.status(200).send('POST: Created ' + note)
+        io.emit('pleaseFetch')
+      })
     })
 
 
     // READ ALL NOTES
     .get(function (req, res) {
-      res.status(200).json(entries)
-    })
+      Note.find({})
+      .exec(function (err, notes) {
+        if(err) {
+          console.error('GET: Error:', req.body, err)
+          res.status(400).send('GET: Error')
+          return false
+        }
 
+        // console.log('GET: Returned ', notes)
+        res.status(200).json(notes)
+      })
+    })
 
 
   // BY ID
-  router.route('/notes/:note_id')
+  router.route('/notes/:_id')
 
     // UPDATE A NOTE
     .put(function (req, res) {
-      entries.map((note) => {
-        if (note.id === parseInt(req.params.note_id)) {
-          let body = req.body
-          if (body.title !== undefined)
-            note.title = body.title
-          if (body.text !== undefined)
-            note.text = body.text
-          if (body.deleted !== undefined)
-            note.title = body.text
-        }
-      })
+      const note = req.body
 
-      res.json({ message: 'Updated ' + req.params.note_id })
-      io.emit('pleaseFetch')
+      Note.findByIdAndUpdate(
+        req.params._id, 
+        {'$set': note}, 
+        function(err, note) {
+          if (err) {
+            console.error('PUT: Error:', req.body, err)
+            res.send('PUT: Error').status(400)
+            return false
+          }
+
+          console.log('PUT: Updated note:', note)
+          res.send('PUT: Updated ' + note).status(200)
+          io.emit('pleaseFetch')
+        }
+      )
     })
 
+    
     // SOFT DELETE A NOTE
     .delete(function (req, res) {
-      entries.map((note) => {
-        if (note.id === parseInt(req.params.note_id))
-          note.deleted = !note.deleted
-      })
+      Note.findById(
+        req.params._id,
+        function (err, note) {
+          console.log(req.params_id)
+          Note.update(
+            { _id: note._id },
+            { deleted: !note.deleted },
+            function(err, note) {
+              if (err) {
+                console.error('PUT: Error:', req.body, err)
+                res.send('PUT: Error').status(400)
+                return false
+              }
 
-      res.json({ message: 'Soft deleted ' + req.params.note_id })
-      io.emit('pleaseFetch')
+              console.log('DELETE: Toggled delete on note:', note)
+              res.send('DELETE: Toggled delete on note: ' + note).status(200)
+              io.emit('pleaseFetch')
+            }
+          )
+        }
+      )
     })
 
 
