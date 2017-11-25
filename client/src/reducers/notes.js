@@ -20,26 +20,6 @@ const notes = (
         lastUpdated: action.receivedAt
       })
 
-    // case 'CHANGE_TITLE':
-    //   return {
-    //     ...state,
-    //     items: state.items.map(note =>
-    //       (note.id === action.id) 
-    //         ? {...note, title: action.value}
-    //         : note
-    //     )
-    //   }
-
-    // case 'CHANGE_TEXT':
-    //   return {
-    //     ...state,
-    //     items: state.items.map(note =>
-    //       (note.id === action.id) 
-    //         ? {...note, text: action.value}
-    //         : note
-    //     )
-    //   }
-
     default:
       return state
 

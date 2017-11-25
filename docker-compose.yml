@@ -1,0 +1,21 @@
+version: "2"
+services:
+  client:
+    build: ./client
+    ports:
+      - '3000:3000'
+  server:
+    depends_on: 
+      - 'mongo'
+    build: './server'
+    ports:
+      - '4000:4000'
+  mongo:
+    image: 'mongo:latest'
+    environment:
+      - AUTH=no
+    volumes:
+      - /data/db:/data/db
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles -logpath=/dev/null

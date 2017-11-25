@@ -1,9 +1,9 @@
 const express = require('express')
 const http = require('http')
-const socketIo = require('socket.io')
-// const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const socketIo = require('socket.io')
+const mongoose = require('mongoose')
 
 const app = express()
 const server = http.Server(app)
@@ -13,7 +13,6 @@ const config = require('./config')
 const utils = require('./utils')
 const apiController = require('./controllers/api')
 const socketController = require('./controllers/socket')
-// const noteModel = require('./models/noteModel')
 
 
 // INITIAL SERVER CONFIGURATION
@@ -28,16 +27,11 @@ server.listen(port, () => {
 
 
 // MONGOOSE CONFIGURATION
-// TEMP STUFF
-var nextId = 1
-var entries = [
-  {
-    id: 0,
-    title: "Title",
-    text: "Text",
-    deleted: false
-  }
-]
+mongoose.Promise = require('bluebird')
+
+mongoose.connect("mongodb://mongo:27017", {useMongoClient: true})
+  .then(({db: {databaseName}}) => console.log(`Connected to ${databaseName}`))
+  .catch(err => console.log(err))
 
 
 // EXPRESS CONFIGURATION
@@ -48,4 +42,4 @@ app.use(bodyParser.json())
 
 // SOCKETS AND ROUTES
 socketController(io)
-app.use(apiController(io, nextId, entries))
+app.use(apiController(io))
