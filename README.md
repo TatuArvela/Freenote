@@ -23,7 +23,7 @@ The web client uses the following technologies:
 * Redux Thunk
 * Sass
 * Socket.io
-* Jest
+<!-- * Jest -->
 
 The web client's user interface is a mix of Google's Material Design and a tabbed toolbar.
 
@@ -45,8 +45,8 @@ The server uses the following technologies:
 * Mongoose
 * Bluebird
 * Chalk
-* Mocha
-* Chai
+<!-- * Mocha -->
+<!-- * Chai -->
 
 
 
