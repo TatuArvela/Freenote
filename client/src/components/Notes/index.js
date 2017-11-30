@@ -12,7 +12,6 @@ import Note from './Note'
 import './style.scss';
 
 const getVisibleNotes = (state) => {
-  console.log(state)
   const notes = state.notes.items
   switch (state.visibilityFilter) {
     case 'SHOW_ACTIVE':
