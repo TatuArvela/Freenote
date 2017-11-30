@@ -9,10 +9,24 @@ export const requestNotes = () => {
   }
 }
 
+export const requestSingleNote = () => {
+  return {
+    type: "REQUEST_SINGLE_NOTE",
+  }
+}
+
 export const receiveNotes = (json) => {
   return {
     type: "RECEIVE_NOTES",
     items: json,
+    receivedAt: Date.now()
+  }
+}
+
+export const receiveSingleNote = (json) => {
+  return {
+    type: "RECEIVE_SINGLE_NOTE",
+    item: json,
     receivedAt: Date.now()
   }
 }
@@ -24,6 +38,15 @@ export const fetchNotes = () => {
     return fetch(`${serverUrl}/notes`)
       .then(response => response.json())
       .then(json => dispatch(receiveNotes(json)))
+  }
+}
+
+export const fetchSingleNote = (id) => {
+  return (dispatch) => {
+    dispatch(requestSingleNote())
+    return fetch(`${serverUrl}/notes/` + id)
+      .then(response => response.json())
+      .then(json => dispatch(receiveSingleNote(json)))
   }
 }
 

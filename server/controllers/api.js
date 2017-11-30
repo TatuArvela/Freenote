@@ -58,6 +58,22 @@ const apiController = function(io) {
   // BY ID
   router.route('/notes/:_id')
 
+    // READ A NOTE
+    .get(function (req, res) {
+      Note.findById(
+        req.params._id,
+        function (err, note) {
+          if(err) {
+            console.error('GET: Error:', req.body, err)
+            res.status(400).send('GET: Error')
+            return false
+          }
+
+          res.status(200).json(note)
+        }
+      )
+    })
+
     // UPDATE A NOTE
     .put(function (req, res) {
       const note = req.body
@@ -74,33 +90,28 @@ const apiController = function(io) {
 
           console.log('PUT: Updated note:', note)
           res.send('PUT: Updated ' + note).status(200)
-          io.emit('pleaseFetch')
+          io.emit('pleaseFetchSingle', { id: note._id })
         }
       )
     })
 
-    
     // SOFT DELETE A NOTE
     .delete(function (req, res) {
       Note.findById(
         req.params._id,
         function (err, note) {
-          console.log(req.params_id)
-          Note.update(
-            { _id: note._id },
-            { deleted: !note.deleted },
-            function(err, note) {
-              if (err) {
-                console.error('PUT: Error:', req.body, err)
-                res.send('PUT: Error').status(400)
-                return false
-              }
-
-              console.log('DELETE: Toggled delete on note:', note)
-              res.send('DELETE: Toggled delete on note: ' + note).status(200)
-              io.emit('pleaseFetch')
+          note.deleted = !note.deleted
+          note.save(function(err, updatedNote) {
+            if (err) {
+              console.error('PUT: Error:', req.body, err)
+              res.send('PUT: Error').status(400)
+              return false
             }
-          )
+
+            console.log('DELETE: Toggled delete on note:', note)
+            res.send('DELETE: Toggled delete on note: ' + note).status(200)
+            io.emit('pleaseFetchSingle', { id: note._id })
+          })
         }
       )
     })

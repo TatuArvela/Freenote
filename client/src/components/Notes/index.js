@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { 
   fetchNotes,
+  fetchSingleNote,
   softDelete,
   changeTitle,
   changeText
@@ -10,9 +11,8 @@ import PropTypes from 'prop-types'
 import Note from './Note'
 import './style.scss';
 
-// TODO: Clean up this mess
-
 const getVisibleNotes = (state) => {
+  console.log(state)
   const notes = state.notes.items
   switch (state.visibilityFilter) {
     case 'SHOW_ACTIVE':
@@ -54,6 +54,10 @@ class Notes extends Component {
       socket.on('pleaseFetch', function () {
         dispatch(fetchNotes())
       });
+
+      socket.on('pleaseFetchSingle', function (payload) {
+        dispatch(fetchSingleNote(payload.id))
+      });
     });
   }
 
@@ -64,12 +68,12 @@ class Notes extends Component {
 
     if (notes.isFetching && notes.items.length === 0)
       return (
-        <div class="notes-message">Loading notes...</div>
+        <div className="notes-message">Loading notes...</div>
       )
 
     else if (!notes.isFetching && notes.items.length === 0)
       return (
-        <div class="notes-message">Empty</div>
+        <div className="notes-message">Empty</div>
       )
 
     else if (notes.items.length > 0)
@@ -96,7 +100,7 @@ Notes.propTypes = {
     isFetching: PropTypes.bool.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        _id: PropTypes.string.isRequired,
         deleted: PropTypes.bool.isRequired,
         title: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired
