@@ -2,7 +2,7 @@
 
 .notes {
   position: absolute;
-  top: 116px;
+  top: 100px;
   bottom: 0px;
   width: 100%;
   margin: auto;
@@ -136,7 +136,7 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 519px) {
   .notes-grid {
     justify-content: center !important;
   }

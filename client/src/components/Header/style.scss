@@ -9,23 +9,18 @@
   padding-top: 2px;
   min-height: 30px;
   user-select: none;
-}
-
-.header-tabs {
-  position: relative;
-  display: block;
-  height: 30px;
-  line-height: 18px;
+  z-index: 20;
 }
 
 .window-title {
   position: absolute;
-  bottom: 0px;
+  top: 2px;
   left: 0px;
   right: 0px;
   height: 30px;
   text-align: center;
   font-size: 12px;
+  line-height: 18px;
   padding: 6px 12px;
   color: $primary-text;
   cursor: default;
@@ -33,14 +28,15 @@
 }
 
 .header-tab {
-  display: inline-block;
+  float: left;
   vertical-align: top;
-  height: 100%;
+  height: 30px;
   text-align: center;
   margin: 0px 2px;
   padding: 6px 12px;
   min-width: 62px;
   font-size: 12px;
+  line-height: 18px;
   color: $primary-text;
   text-decoration: none;
   cursor: default;
@@ -61,7 +57,7 @@
 
 .search {
   display: inline-block;
-  height: 100%;
+  height: 30px;
   width: 200px;
   color: $primary-text;
   margin: 0px 5px;
@@ -103,14 +99,25 @@
 }
 
 .user-name {
-  height: 100%;
+  height: 30px;
   float: right;
   font-size: 12px;
+  line-height: 18px;
   color: $primary-text;
   padding: 6px 12px;
   cursor: pointer;
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.user-icon {
+  display: none;
+  height: 30px;
+  cursor: pointer;
+  & > i {
+    padding: 3px;
+    color: $primary-text;
   }
 }
 
@@ -206,7 +213,7 @@
   }
   &:hover,
   &:focus {
-    box-shadow: 1px 1px #C5CAE9;
+    box-shadow: 1px 1px rgb(197, 202, 233);
   }
   &:active,
   &.active {
@@ -292,8 +299,42 @@
   width: calc(100% - 4px);
 }
 
-@media screen and (max-width: 550px) {
-  .window-title, .search {
+@media screen and (max-width: 810px) {
+  .window-title {
     display: none;
+  }
+}
+
+@media screen and (max-width: 519px) {
+  .user-name {
+    display: none;
+  }
+
+  .user-icon,
+  .search {
+    margin: 0px 2px;
+    display: block;
+    float: right;
+    width: auto;
+
+    & > i {
+      padding: 3px;
+    }
+    & > input {
+      display: none;
+    }
+  }
+
+  .user-icon {
+    &:hover,
+    &:focus {
+      background: lighten($primary, 8);
+      outline: none;
+    }
+  }
+
+  .header-tab {
+    float: none;
+    display: inline-block;
   }
 }
