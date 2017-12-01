@@ -76,11 +76,9 @@ const apiController = function(io) {
 
     // UPDATE A NOTE
     .put(function (req, res) {
-      const note = req.body
-
       Note.findByIdAndUpdate(
         req.params._id, 
-        {'$set': note}, 
+        {'$set': req.body}, 
         function(err, note) {
           if (err) {
             console.error('PUT: Error:', req.body, err)
@@ -89,7 +87,7 @@ const apiController = function(io) {
           }
 
           console.log('PUT: Updated note:', note)
-          res.send('PUT: Updated ' + note).status(200)
+          res.send('PUT: Updated ' + req.body).status(200)
           io.emit('pleaseFetchSingle', { id: note._id })
         }
       )
