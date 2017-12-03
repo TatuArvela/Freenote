@@ -29,7 +29,7 @@ server.listen(port, () => {
 // MONGOOSE CONFIGURATION
 mongoose.Promise = require('bluebird')
 
-mongoose.connect("mongodb://" + config.database.url + ":" + config.database.port, {useMongoClient: true})
+mongoose.connect('mongodb://' + config.database.url + ':' + config.database.port + '/' + config.database.name, {useMongoClient: true})
   .then(({db: {databaseName}}) => console.log(`Connected to ${databaseName}`))
   .catch(err => console.log(err))
 

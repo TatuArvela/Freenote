@@ -3,6 +3,8 @@ const connections = []
 
 const socketController = function (io) {
 
+// TODO: Require token for connection
+
   // CONNECT
   io.on('connection', (socket) => {
     var address = socket.conn.remoteAddress

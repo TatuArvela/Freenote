@@ -1,4 +1,6 @@
 const express = require('express')
+const jwt = require('jsonwebtoken')
+
 const Note = require('../models/note')
 const config = require('../config')
 const router = express.Router()
@@ -10,6 +12,78 @@ const apiController = function(io) {
     res.json({
       message: 'Freenote Server v' + config.version
     })
+  })
+
+
+  // AUTHENTICATION
+  router.post('/authenticate', function (req, res) {
+    User.findOne({
+      username: req.body.username
+    }, function (err, user) {
+      // ERROR
+      if (err) {
+        console.log('AUTH: Error:', req.body, err)
+        res.status(400).send('AUTH: Error')
+        return false
+      }
+
+      // FAILURE
+      if (!user) {
+        res.json({
+          success: false,
+          message: 'AUTH: Failed to authenticate with provided username and password.'
+        })
+      }
+      else if (user) {
+        if (user.password != req.body.password) {
+          res.json({
+            success: false,
+            message: 'AUTH: Failed to authenticate with provided username and password.'
+          })
+        }
+      }
+
+      // SUCCESS
+      else {
+        var token = jwt.sign(user, secret, {
+          expiresIn: 1440 // 24 hours
+        })
+
+        res.json({
+          success: true,
+          message: 'AUTH: Token created for ' + user.username,
+          token: token,
+          admin: user.admin
+        })
+      }
+    })
+  })
+
+
+  // AUTHORIZATION
+  router.use(function (req, res, next) {
+    var token = req.body.token || req.query.token || req.headers['x-access-token']
+
+    if (token) {
+      jwt.verify(token, secret, function (err, decoded) {
+        if (err) {
+          return res.json({
+            success: false,
+            message: 'AUTH: Failed to authenticate token.'
+          })
+        }
+        else {
+          req.decoded = decoded
+          next();
+        }
+      })
+    }
+    else {
+      return res.status(403).send({
+        success: false,
+        message: 'AUTH: No token provided.'
+      })
+    }
   })
 
 
