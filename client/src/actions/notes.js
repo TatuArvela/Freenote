@@ -37,6 +37,7 @@ export const fetchNotes = () => {
     dispatch(requestNotes())
     return fetch(`${serverUrl}/notes`)
       .then(response => response.json())
+      .then(json => actOnResponse(json))
       .then(json => dispatch(receiveNotes(json)))
   }
 }
@@ -46,10 +47,19 @@ export const fetchSingleNote = (id) => {
     dispatch(requestSingleNote())
     return fetch(`${serverUrl}/notes/` + id)
       .then(response => response.json())
+      .then(json => actOnResponse(json))
       .then(json => dispatch(receiveSingleNote(json)))
   }
 }
 
+const actOnResponse = (json) => {
+  // If receiving something other than notes, drop everything
+  if (json.success !== undefined)
+    // Should then redirect to login
+    return []
+  else
+    return json
+}
 
 
 // ACTIONS
