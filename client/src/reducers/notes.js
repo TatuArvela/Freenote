@@ -1,7 +1,7 @@
 const notes = (
   state = {
     isFetching: false,
-    items: [],
+    items: []
   },
   action
 ) => {

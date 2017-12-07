@@ -62,7 +62,7 @@ class Notes extends Component {
 
   render() {
     const {
-      notes,
+      notes
     } = this.props
 
     if (notes.isFetching && notes.items.length === 0)

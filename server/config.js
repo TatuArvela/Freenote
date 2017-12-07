@@ -8,5 +8,6 @@ module.exports = {
     'url': process.env.DATABASEURL || 'localhost',
     'port': parseInt(process.env.DATABASEPORT, 10) || 27017,
     'name': 'Freenote'
-  }
+  },
+  'secret': 'Freenote'
 };
