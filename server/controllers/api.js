@@ -2,6 +2,7 @@ const express = require('express')
 const jwt = require('jsonwebtoken')
 
 const Note = require('../models/note')
+const User = require('../models/user')
 const config = require('../config')
 const router = express.Router()
 
@@ -15,11 +16,32 @@ const apiController = function(io) {
   })
 
 
+  // TESTING: POST A NEW USER
+  router.post('/users', function (req, res) {
+    let user = new User({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      username: req.body.username,
+      password: req.body.password,
+      admin: req.body.admin
+    })
+
+    user.save(function (err) {
+      if (err) throw err
+      res.json(user)
+    })
+  })
+
+
   // AUTHENTICATION
   router.post('/authenticate', function (req, res) {
     User.findOne({
       username: req.body.username
-    }, function (err, user) {
+    }, function (err, _user) {
+      // User needs to be converted to a plain object
+      var user = JSON.parse(JSON.stringify(_user));
+
       // ERROR
       if (err) {
         console.log('AUTH: Error:', req.body, err)
@@ -29,32 +51,39 @@ const apiController = function(io) {
 
       // FAILURE
       if (!user) {
+        console.log('AUTH: Failed to authenticate with provided username and password')
         res.json({
           success: false,
-          message: 'AUTH: Failed to authenticate with provided username and password.'
+          message: 'AUTH: Failed to authenticate with provided username and password'
         })
       }
-      else if (user) {
+
+      else {
         if (user.password != req.body.password) {
+          console.log('AUTH: Failed to authenticate with provided username and password')
           res.json({
             success: false,
-            message: 'AUTH: Failed to authenticate with provided username and password.'
+            message: 'AUTH: Failed to authenticate with provided username and password'
           })
         }
-      }
 
-      // SUCCESS
-      else {
-        var token = jwt.sign(user, secret, {
-          expiresIn: 1440 // 24 hours
-        })
-
-        res.json({
-          success: true,
-          message: 'AUTH: Token created for ' + user.username,
-          token: token,
-          admin: user.admin
-        })
+        // SUCCESS
+        else {
+          var token = jwt.sign(user, config.secret, {
+            expiresIn: 1440 // 24 hours
+          })
+          console.log('AUTH: Token created for ' + user.username)
+          res.json({
+            success: true,
+            message: 'AUTH: Token created for ' + user.username,
+            token: token,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            email: user.email,
+            admin: user.admin
+          })
+        }
       }
     })
   })
@@ -65,7 +94,7 @@ const apiController = function(io) {
     var token = req.body.token || req.query.token || req.headers['x-access-token']
 
     if (token) {
-      jwt.verify(token, secret, function (err, decoded) {
+      jwt.verify(token, config.secret, function (err, decoded) {
         if (err) {
           return res.json({
             success: false,
@@ -93,7 +122,7 @@ const apiController = function(io) {
     // CREATE A NOTE
     .post(function (req, res) {
       let note = new Note({
-        user: 'test',
+        user: 'tatu',
         title: '',
         text: '',
         deleted: false

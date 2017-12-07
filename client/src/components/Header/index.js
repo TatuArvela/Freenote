@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-let Header = ({ toolbar, switchTab }) => (
+let Header = ({toolbar, switchTab}) => (
   <div className="header">
     <h1 className="window-title">Freenote</h1>
 

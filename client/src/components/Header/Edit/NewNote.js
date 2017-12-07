@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { newNote } from '../../../actions/notes'
 
-let NewNote = () => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onClick: () => {
+      dispatch(newNote())
+    }
+  }
+}
+
+let NewNote = ({ dispatch, onClick }) => {
   return (
     <button
       className="header-toolbar-button big"
-      onClick={newNote}
+      onClick={() => onClick()}
     >
       <i className="material-icons">note_add</i>
       <span className="button-title">New Note</span>
@@ -13,4 +22,7 @@ let NewNote = () => {
   )
 }
 
-export default NewNote
+export default connect(
+  null,
+  mapDispatchToProps
+)(NewNote)
