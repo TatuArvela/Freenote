@@ -9,7 +9,7 @@ import Login from './views/Login';
 import './index.scss';
 
 const target = document.querySelector('#root');
-// store.getState().user.token
+
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

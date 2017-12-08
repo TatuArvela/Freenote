@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { switchTab } from '../../actions/toolbar'
+import { logout } from '../../actions/user'
 import Edit from './Edit';
 import View from './View';
 import './style.scss';
@@ -15,16 +16,20 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     switchTab: (tab) => {
       dispatch(switchTab(tab))
+    },
+    logout: () => {
+      dispatch(logout())
     }
   }
 }
 
-let Header = ({toolbar, switchTab}) => (
+let Header = ({toolbar, switchTab, logout}) => (
   <div className="header">
     <h1 className="window-title">Freenote</h1>
 
-    <div className="user-name">Tatu Arvela</div>
-    <div className="user-icon">
+    {/* TODO: Make this a component of its own, and add in user info */}
+    <div className="user-name" onClick={() => logout()}>Log out</div>
+    <div className="user-icon" onClick={() => logout()}>
       <i className="material-icons">person</i>
     </div>
 

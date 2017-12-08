@@ -1,6 +1,5 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
-
 const Note = require('../models/note')
 const User = require('../models/user')
 const config = require('../config')
@@ -45,14 +44,17 @@ const apiController = function(io) {
       // ERROR
       if (err) {
         console.log('AUTH: Error:', req.body, err)
-        res.status(400).send('AUTH: Error')
+        res.status(401).json({
+          success: false,
+          message: 'AUTH: Error'
+        })
         return false
       }
 
       // FAILURE
       if (!user) {
         console.log('AUTH: Failed to authenticate with provided username and password')
-        res.json({
+        res.status(401).json({
           success: false,
           message: 'AUTH: Failed to authenticate with provided username and password'
         })
@@ -61,7 +63,7 @@ const apiController = function(io) {
       else {
         if (user.password != req.body.password) {
           console.log('AUTH: Failed to authenticate with provided username and password')
-          res.json({
+          res.status(401).json({
             success: false,
             message: 'AUTH: Failed to authenticate with provided username and password'
           })
@@ -70,13 +72,14 @@ const apiController = function(io) {
         // SUCCESS
         else {
           var token = jwt.sign(user, config.secret, {
-            expiresIn: 1440 // 24 hours
+            expiresIn: config.tokenExpiration
           })
           console.log('AUTH: Token created for ' + user.username)
-          res.json({
+          res.status(200).json({
             success: true,
             message: 'AUTH: Token created for ' + user.username,
             token: token,
+            expires: config.tokenExpiration,
             firstName: user.firstName,
             lastName: user.lastName,
             username: user.username,
@@ -90,13 +93,13 @@ const apiController = function(io) {
 
 
   // AUTHORIZATION
-  router.use(function (req, res, next) {
+  router.use('/notes', function (req, res, next) {
     var token = req.body.token || req.query.token || req.headers['x-access-token']
 
     if (token) {
       jwt.verify(token, config.secret, function (err, decoded) {
         if (err) {
-          return res.json({
+          res.status(401).json({
             success: false,
             message: 'AUTH: Failed to authenticate token.'
           })
@@ -108,7 +111,7 @@ const apiController = function(io) {
       })
     }
     else {
-      return res.status(403).send({
+      return res.status(401).json({
         success: false,
         message: 'AUTH: No token provided.'
       })
@@ -131,12 +134,18 @@ const apiController = function(io) {
       note.save(function (err) {
         if(err) {
           console.error('POST: Error:', req.body, err)
-          res.status(400).send('POST: Error')
+          res.status(400).json({
+            success: false,
+            message: 'POST: Error'
+          })
           return false
         }
 
         console.log('POST: Created ' + note)
-        res.status(200).send('POST: Created ' + note)
+        res.status(200).json({
+          success: true,
+          message: 'POST: Created ' + note
+        })
         io.emit('pleaseFetch')
       })
     })
@@ -148,7 +157,10 @@ const apiController = function(io) {
       .exec(function (err, notes) {
         if(err) {
           console.error('GET: Error:', req.body, err)
-          res.status(400).send('GET: Error')
+          res.status(400).json({
+            success: false,
+            message: 'GET: Error'
+          })
           return false
         }
 
@@ -168,7 +180,10 @@ const apiController = function(io) {
         function (err, note) {
           if(err) {
             console.error('GET: Error:', req.body, err)
-            res.status(400).send('GET: Error')
+            res.status(400).json({
+              success: false,
+              message: 'GET: Error'
+            })
             return false
           }
 
@@ -185,12 +200,18 @@ const apiController = function(io) {
         function(err, note) {
           if (err) {
             console.error('PUT: Error:', req.body, err)
-            res.send('PUT: Error').status(400)
+            res.status(400).json({
+              success: false,
+              message: 'PUT: Error'
+            })
             return false
           }
 
           console.log('PUT: Updated note:', note)
-          res.send('PUT: Updated ' + req.body).status(200)
+          res.status(200).json({
+            success: true,
+            message: 'PUT: Updated ' + req.body
+          })
           io.emit('pleaseFetchSingle', { id: note._id })
         }
       )
@@ -205,12 +226,18 @@ const apiController = function(io) {
           note.save(function(err, updatedNote) {
             if (err) {
               console.error('PUT: Error:', req.body, err)
-              res.send('PUT: Error').status(400)
+              res.status(400).json({
+                success: false,
+                message: 'PUT: Error'
+              })
               return false
             }
 
-            console.log('DELETE: Toggled delete on note:', note)
-            res.send('DELETE: Toggled delete on note: ' + note).status(200)
+            console.log('PUT: Toggled delete on note:', note)
+            res.status(200).json({
+              success: true,
+              message: 'PUT: Toggled delete on note: ' + note
+            })
             io.emit('pleaseFetchSingle', { id: note._id })
           })
         }

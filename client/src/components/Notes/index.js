@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { 
-  fetchNotes,
-  fetchSingleNote,
-  softDelete,
-  changeTitle,
-  changeText
-} from '../../actions/notes'
+import { fetchNotes, fetchSingleNote } from '../../actions/notes'
 import PropTypes from 'prop-types'
 import Note from './Note'
 import './style.scss';
@@ -43,20 +37,22 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Notes extends Component {
-  componentDidMount() {
+  componentWillMount() {
     const { socket, dispatch } = this.props
 
+    // Events that should trigger fetching
+    dispatch(fetchNotes())
+
     socket.on('connect', function () {
-      socket.emit('connection')
       dispatch(fetchNotes())
+    });
 
-      socket.on('pleaseFetch', function () {
-        dispatch(fetchNotes())
-      });
+    socket.on('pleaseFetch', function () {
+      dispatch(fetchNotes())
+    });
 
-      socket.on('pleaseFetchSingle', function (payload) {
-        dispatch(fetchSingleNote(payload.id))
-      });
+    socket.on('pleaseFetchSingle', function (payload) {
+      dispatch(fetchSingleNote(payload.id))
     });
   }
 
@@ -83,9 +79,6 @@ class Notes extends Component {
             <Note
               key={note._id}
               {...note}
-              onClickDelete={() => softDelete(note._id)}
-              onTitleChange={(e) => changeTitle(note._id, e.target.value)}
-              onTextChange={(e) => changeText(note._id, e.target.value)}
             />
           ))}
         </div>

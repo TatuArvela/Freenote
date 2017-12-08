@@ -9,5 +9,6 @@ module.exports = {
     'port': parseInt(process.env.DATABASEPORT, 10) || 27017,
     'name': 'Freenote'
   },
+  'tokenExpiration': 86400,
   'secret': 'Freenote'
 };
