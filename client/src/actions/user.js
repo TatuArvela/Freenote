@@ -71,7 +71,7 @@ const _login = (data) => {
 
 // TODO: This function should also notify the server to drop the user token
 export const logout = () => {
-  alert("You have been logged out.")
+  alert("You have logged out")
   Cookies.remove('freenote-token')
   return {
     type: "LOGOUT"
