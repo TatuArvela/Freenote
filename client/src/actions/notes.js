@@ -1,4 +1,5 @@
 import config from '../config'
+import { logout } from './user'
 
 
 // RECEIVE
@@ -31,6 +32,14 @@ export const receiveSingleNote = (json) => {
   }
 }
 
+function handleErrors(response, dispatch) {
+  if (!response.ok) {
+    dispatch(logout())
+    throw Error(response.statusText)
+  }
+  return response
+}
+
 export const fetchNotes = () => {
   return (dispatch, getState) => {
     dispatch(requestNotes())
@@ -39,9 +48,12 @@ export const fetchNotes = () => {
         'X-Access-Token': getState().user.token
       }
     })
+      .then(response => handleErrors(response, dispatch))
       .then(response => response.json())
-      .then(json => actOnResponse(json))
       .then(json => dispatch(receiveNotes(json)))
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 }
 
@@ -53,19 +65,13 @@ export const fetchSingleNote = (id) => {
         'X-Access-Token': getState().user.token
       }
     })
+      .then(response => handleErrors(response, dispatch))
       .then(response => response.json())
-      .then(json => actOnResponse(json))
       .then(json => dispatch(receiveSingleNote(json)))
+      .catch(function(error) {
+        console.log(error);
+      });
   }
-}
-
-const actOnResponse = (json) => {
-  // If receiving something other than notes, drop everything
-  if (json.success !== undefined)
-    // Should then redirect to login
-    return []
-  else
-    return json
 }
 
 export const newNote = () => {
@@ -78,6 +84,10 @@ export const newNote = () => {
         'X-Access-Token': getState().user.token
       }
     })
+    .then(response => handleErrors(response, dispatch))
+    .catch(function(error) {
+      console.log(error);
+    });
   }
 }
 
@@ -85,7 +95,7 @@ export const newNote = () => {
 // SEND
 
 export const softDelete = (_id) => {
-  return (getState) => {
+  return (dispatch, getState) => {
     return fetch(`${config.server.url}/notes/` + _id, {
       method: 'DELETE',
       headers: {
@@ -94,11 +104,15 @@ export const softDelete = (_id) => {
         'X-Access-Token': getState().user.token
       }
     })
+    .then(response => handleErrors(response, dispatch))
+    .catch(function(error) {
+      console.log(error);
+    });
   }
 }
 
 export const changeTitle = (_id, value) => {
-  return (getState) => {
+  return (dispatch, getState) => {
     return fetch(`${config.server.url}/notes/` + _id, {
       method: 'PUT',
       headers: {
@@ -110,11 +124,15 @@ export const changeTitle = (_id, value) => {
         title: value
       })
     })
+    .then(response => handleErrors(response, dispatch))
+    .catch(function(error) {
+      console.log(error);
+    });
   }
 }
 
 export const changeText = (_id, value) => {
-  return (getState) => {
+  return (dispatch, getState) => {
     return fetch(`${config.server.url}/notes/` + _id, {
       method: 'PUT',
       headers: {
@@ -126,5 +144,9 @@ export const changeText = (_id, value) => {
         text: value
       })
     })
+    .then(response => handleErrors(response, dispatch))
+    .catch(function(error) {
+      console.log(error);
+    });
   }
 }

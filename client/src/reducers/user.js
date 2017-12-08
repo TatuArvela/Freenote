@@ -1,14 +1,13 @@
 const user = (
   state = {
+    loading: true,
     token: null,
     userdata: []
   },
   action
 ) => {
   switch (action.type) {
-
     case 'LOGIN':
-    console.log("LOGIN!")
       return {
         token: action.token,
         userdata: action.userdata
@@ -18,6 +17,11 @@ const user = (
       return {
         token: null,
         userdata: []
+      }
+
+    case 'READY':
+      return {
+        loading: false
       }
 
     default:
