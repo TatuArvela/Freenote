@@ -1,17 +1,18 @@
 import config from '../config'
-const serverUrl = 'http://' + config.server.ip + ":" + config.server.port
+import { logout } from './user'
 
-// TRANSPORT
+
+// RECEIVE
 
 export const requestNotes = () => {
   return {
-    type: "REQUEST_NOTES",
+    type: "REQUEST_NOTES"
   }
 }
 
 export const requestSingleNote = () => {
   return {
-    type: "REQUEST_SINGLE_NOTE",
+    type: "REQUEST_SINGLE_NOTE"
   }
 }
 
@@ -31,81 +32,121 @@ export const receiveSingleNote = (json) => {
   }
 }
 
+function handleErrors(response, dispatch) {
+  if (!response.ok) {
+    dispatch(logout())
+    throw Error(response.statusText)
+  }
+  return response
+}
+
 export const fetchNotes = () => {
-  return (dispatch) => {
-    console.log("fetchNotes")
+  return (dispatch, getState) => {
     dispatch(requestNotes())
-    return fetch(`${serverUrl}/notes`)
+    return fetch(`${config.server.url}/notes`, {
+      headers: {
+        'X-Access-Token': getState().user.token
+      }
+    })
+      .then(response => handleErrors(response, dispatch))
       .then(response => response.json())
-      .then(json => actOnResponse(json))
       .then(json => dispatch(receiveNotes(json)))
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 }
 
 export const fetchSingleNote = (id) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch(requestSingleNote())
-    return fetch(`${serverUrl}/notes/` + id)
+    return fetch(`${config.server.url}/notes/` + id, {
+      headers: {
+        'X-Access-Token': getState().user.token
+      }
+    })
+      .then(response => handleErrors(response, dispatch))
       .then(response => response.json())
-      .then(json => actOnResponse(json))
       .then(json => dispatch(receiveSingleNote(json)))
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 }
 
-const actOnResponse = (json) => {
-  // If receiving something other than notes, drop everything
-  if (json.success !== undefined)
-    // Should then redirect to login
-    return []
-  else
-    return json
-}
-
-
-// ACTIONS
-
 export const newNote = () => {
-  fetch(`${serverUrl}/notes`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    }
-  })
+  return (dispatch, getState) => {
+    return fetch(`${config.server.url}/notes`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-Access-Token': getState().user.token
+      }
+    })
+    .then(response => handleErrors(response, dispatch))
+    .catch(function(error) {
+      console.log(error);
+    });
+  }
 }
+
+
+// SEND
 
 export const softDelete = (_id) => {
-  fetch(`${serverUrl}/notes/` + _id, {
-    method: 'DELETE',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    }
-  })
+  return (dispatch, getState) => {
+    return fetch(`${config.server.url}/notes/` + _id, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-Access-Token': getState().user.token
+      }
+    })
+    .then(response => handleErrors(response, dispatch))
+    .catch(function(error) {
+      console.log(error);
+    });
+  }
 }
 
 export const changeTitle = (_id, value) => {
-  fetch(`${serverUrl}/notes/` + _id, {
-    method: 'PUT',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      title: value
+  return (dispatch, getState) => {
+    return fetch(`${config.server.url}/notes/` + _id, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-Access-Token': getState().user.token
+      },
+      body: JSON.stringify({
+        title: value
+      })
     })
-  })
+    .then(response => handleErrors(response, dispatch))
+    .catch(function(error) {
+      console.log(error);
+    });
+  }
 }
 
 export const changeText = (_id, value) => {
-  fetch(`${serverUrl}/notes/` + _id, {
-    method: 'PUT',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      text: value
+  return (dispatch, getState) => {
+    return fetch(`${config.server.url}/notes/` + _id, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-Access-Token': getState().user.token
+      },
+      body: JSON.stringify({
+        text: value
+      })
     })
-  })
+    .then(response => handleErrors(response, dispatch))
+    .catch(function(error) {
+      console.log(error);
+    });
+  }
 }

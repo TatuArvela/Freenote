@@ -1,7 +1,11 @@
+const ip = window.location.hostname
+const port = '4000'
+
 const config = {
   server: {
-    ip: window.location.hostname,
-    port: '4000'
+    ip: ip,
+    port: port,
+    url: 'http://' + ip + ":" + port
   }
 }
 
