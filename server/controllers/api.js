@@ -1,5 +1,6 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 const Note = require('../models/note')
 const User = require('../models/user')
 const config = require('../config')
@@ -27,7 +28,13 @@ const apiController = function(io) {
     })
 
     user.save(function (err) {
-      if (err) throw err
+      if (err)
+        console.log('USERS: Error:', req.body, err)
+        res.status(401).json({
+          success: false,
+          message: 'USERS: Error'
+        })
+        return false
       res.json(user)
     })
   })
@@ -51,7 +58,7 @@ const apiController = function(io) {
         return false
       }
 
-      // FAILURE
+      // USER NOT FOUND
       if (!user) {
         console.log('AUTH: Failed to authenticate with provided username and password')
         res.status(401).json({
@@ -60,33 +67,37 @@ const apiController = function(io) {
         })
       }
 
+      // USER FOUND
       else {
-        if (user.password != req.body.password) {
-          console.log('AUTH: Failed to authenticate with provided username and password')
-          res.status(401).json({
-            success: false,
-            message: 'AUTH: Failed to authenticate with provided username and password'
-          })
-        }
+        bcrypt.compare(req.body.password, user.password, function (err, result) {
+          // PASSWORD MATCHES
+          if (result === true) {
+            var token = jwt.sign(user, config.secret, {
+              expiresIn: config.tokenExpiration
+            })
+            console.log('AUTH: Token created for ' + user.username)
+            res.status(200).json({
+              success: true,
+              message: 'AUTH: Token created for ' + user.username,
+              token: token,
+              expires: config.tokenExpiration,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              username: user.username,
+              email: user.email,
+              admin: user.admin
+            })
+          }
 
-        // SUCCESS
-        else {
-          var token = jwt.sign(user, config.secret, {
-            expiresIn: config.tokenExpiration
-          })
-          console.log('AUTH: Token created for ' + user.username)
-          res.status(200).json({
-            success: true,
-            message: 'AUTH: Token created for ' + user.username,
-            token: token,
-            expires: config.tokenExpiration,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            username: user.username,
-            email: user.email,
-            admin: user.admin
-          })
-        }
+          // PASSWORD DOES NOT MATCH
+          else {
+            console.log('AUTH: Failed to authenticate with provided username and password')
+            res.status(401).json({
+              success: false,
+              message: 'AUTH: Failed to authenticate with provided username and password'
+            })
+          }
+        })
       }
     })
   })

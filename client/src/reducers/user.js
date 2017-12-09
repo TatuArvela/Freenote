@@ -9,12 +9,14 @@ const user = (
   switch (action.type) {
     case 'LOGIN':
       return {
+        loading: false,
         token: action.token,
         userdata: action.userdata
       }
 
     case 'LOGOUT':
       return {
+        loading: false,
         token: null,
         userdata: []
       }

@@ -41,6 +41,9 @@ export const readCookie = () => {
       if (cookie.token) {
         dispatch(_login(cookie))
       }
+      else {
+        dispatch(_ready())
+      }
     }
     else {
       dispatch(_ready())

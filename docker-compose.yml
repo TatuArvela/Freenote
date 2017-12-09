@@ -1,21 +1,16 @@
 version: "2"
 services:
-  freenote-client:
+  client:
     build: ./client
     ports:
       - '3000:3000'
-  freenote-server:
+  server:
     depends_on: 
-      - 'freenote-database'
+      - 'mongo'
     build: './server'
     ports:
       - '4000:4000'
-  freenote-database:
+  mongo:
     image: 'mongo:latest'
-    environment:
-      - AUTH=no
-    volumes:
-      - /var/lib/mongodb:/data/db
     ports:
-      - 27017:27017
-    command: mongod --smallfiles -logpath=/dev/null
+      - 27017
