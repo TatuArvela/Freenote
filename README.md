@@ -1,18 +1,21 @@
 ![Freenote icon](./logo.png?raw=true "Freenote")
 
-Freenote is an open-source note-taking application. It consists of three parts: a web client, a server and a database, which are deployed using Docker.
+Freenote is an open-source note-taking application. It consists of three parts: a web client, a server and a database, which are deployed together using Docker.
 
-The main goal of this project is to make a working sample application using modern technologies.
+The main goal of this project was to learn modern web development technologies, most importantly Redux, Docker and Mongo.
 
 
 
 ## Production server
 
-The application will be deployed on my DigitalOcean server using Docker and Jenkins.
+The application is deployed on my DigitalOcean server. This version has major issues with input synchronization which need to be sorted out.
+
+[Demo](http://tatuarvela.com:3000)
+Username: **tatu**
+Password: **salasana**
 
 
-
-## Client (0.3.0)
+## Client (1.0.0)
 
 The web client uses the following technologies:
 
@@ -36,7 +39,7 @@ The web client's user interface is a mix of Google's Material Design and a tabbe
 
 
 
-## Server (0.3.0)
+## Server (1.0.0)
 
 The server uses the following technologies:
 
@@ -47,6 +50,7 @@ The server uses the following technologies:
 * Bluebird
 * Chalk
 * jsonwebtoken
+* bcrypt
 <!-- * Mocha -->
 <!-- * Chai -->
 
