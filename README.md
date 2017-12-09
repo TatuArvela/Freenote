@@ -11,10 +11,8 @@ The main goal of this project was to learn modern web development technologies, 
 The application is deployed on my DigitalOcean server. This version has major issues with input synchronization which need to be sorted out.
 
 [Demo](http://tatuarvela.com:3000)
-
-Username: **tatu**
-
-Password: **salasana**
+* Username: **tatu**
+* Password: **salasana**
 
 
 ## Client (1.0.0)
