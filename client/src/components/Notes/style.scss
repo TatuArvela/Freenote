@@ -1,0 +1,143 @@
+@import '../../palette.scss';
+
+.notes {
+  position: absolute;
+  top: 100px;
+  bottom: 0px;
+  width: 100%;
+  margin: auto;
+  overflow-y: auto;
+}
+
+.notes-message {
+  margin: 30px auto;
+  text-align: center;
+  user-select: none;
+}
+
+.notes-grid {
+  max-width: 1040px;
+  margin: auto;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+.note {
+  border-left: 5px solid darken($note-background, 4);
+  position: relative;
+  display: block;
+  background: $note-background;
+  padding: 10px;
+  margin: 10px 10px;
+  line-height: 20px;
+  font-size: 14px;
+  height: 240px;
+  width: 240px;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+  &.deleted {
+    opacity: 0.5;
+  }
+}
+
+.note-content {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 29px;
+  margin: 8px;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  max-height: 100%;
+  white-space: pre;
+}
+
+.note-title {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 24px;
+  margin-bottom: 16px;
+  border: none;
+  color: $note-text;
+  background: none;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
+  resize: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+.note-textarea {
+  position: absolute;
+  top: 42px;
+  width: 100%;
+  padding: 0px;
+  height: calc(100% - 42px);
+  color: $note-text;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+  resize: none;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: transparentize($note-text, 0.4);
+  }
+}
+
+.note-controls {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 28px;
+}
+
+.note-button {
+  flex-direction: row-reverse;
+  height: 24px;
+  width: 24px;
+  margin: 2px;
+  padding: 0px;
+  background: none;
+  border: none;
+  color: transparentize($note-text, 0.4);
+  &:hover,
+  &:focus {
+    background: rgba(0,0,0,0.1);
+    outline: none;
+  }
+  & > i {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .notes-grid {
+    max-width: 790px !important;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  .notes-grid {
+    max-width: 540px !important;
+  }
+}
+
+@media screen and (max-width: 519px) {
+  .notes-grid {
+    justify-content: center !important;
+  }
+}

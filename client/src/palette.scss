@@ -1,0 +1,17 @@
+$blue800: #1565C0;
+$green500: #4CAF50;
+
+$background: #DFDFDF;
+$primary: $blue800;
+$primary-text: rgb(255, 255, 255);
+$muted: rgb(150, 150, 150);
+
+$toolbar-active: #F5F5F5;
+
+// #B8F396, #B2EBF2, #FEF200, #FF86C1, #7979FF, #f3c896
+$note-background: #f3c896;
+$note-text: darken($note-background, 80);
+
+.green {
+  color: $green500;
+}

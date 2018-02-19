@@ -1,0 +1,12 @@
+@import '../../palette.scss';
+
+.App {
+  display: block;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  font-family: "Noto Sans";
+  background: $background;
+}
