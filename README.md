@@ -18,6 +18,8 @@ The application is deployed on my DigitalOcean server. This version has major is
 
 ## Client (1.0.0)
 
+![Freenote screenshot](./screenshots/2018-01-08.png?raw=true "Freenote screenshot")
+
 The web client uses the following technologies:
 
 * Webpack
